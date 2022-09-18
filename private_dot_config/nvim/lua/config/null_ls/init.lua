@@ -2,7 +2,7 @@ local parents = (...):match "(.-)[^%.]+$"
 local logger = require("null-ls.logger")
 local null_ls = require("null-ls")
 
-ok, flakeheaven = require(parents .. "flakeheaven")
+ok, flakeheaven = require(parents .. "null_ls.flakeheaven")
 
 if not ok then
     logger:warn(

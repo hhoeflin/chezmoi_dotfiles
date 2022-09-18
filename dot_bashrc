@@ -33,7 +33,6 @@ fi
 
 export EDITOR="nvim";
 export PYTHONSTARTUP=~/.config/python/pythonrc.py
-export TERM=xterm
 
 if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
   eval "$(${HOMEBREW_BIN}/starship init bash --print-full-init)"
@@ -43,3 +42,5 @@ eval "$(${HOMEBREW_BIN}/mcfly init bash)"
 
 source ${HOMEBREW_DIR}/opt/lmod/init/profile
 export MODULEPATH=${HOME}/.config/modules:${MODULEPATH:+:${MODULEPATH}}
+
+source ${HOME}/.config/conda/init.sh
