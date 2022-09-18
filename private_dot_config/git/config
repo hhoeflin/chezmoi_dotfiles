@@ -1,0 +1,9 @@
+[core]
+	editor = "nvim"
+
+[init]
+	defaultBranch = "master"
+
+[user]
+	email = "hhoeflin@gmail.com"
+	name = "Holger Hoefling"
