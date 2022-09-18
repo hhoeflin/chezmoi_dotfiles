@@ -1,0 +1,38 @@
+
+
+# Commands that should be applied only for interactive shells.
+[[ $- == *i* ]] || return
+
+HISTFILESIZE=100000
+HISTSIZE=10000
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s globstar
+shopt -s checkjobs
+
+alias dtask='task -t ~/.config/go-task/Taskfile.yml'
+alias e='$EDITOR `fzf -m --preview="bat --color always {}"`'
+alias lg='lazygit'
+alias ll='exa -lahF'
+alias ls='exa -F'
+alias lt='exa -lahF --tree'
+
+export PATH=$HOME/.local/bin:$PATH
+eval "$(zoxide init bash)"
+
+# ensure CTRL-S doesn't block the terminal
+if [[ -t 0 && $- = *i* ]]
+then
+  stty -ixon
+fi
+
+export EDITOR="nvim";
+export PYTHONSTARTUP=~/.config/python/pythonrc.py
+
+if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
+  eval "$(/home/hhoeflin/homebrew/bin/starship init bash --print-full-init)"
+fi
+
+eval "$(/nix/store/wa78vfnl5qarnrmsgzfxahi662cvdr47-mcfly-0.6.0/bin/mcfly init bash)"
