@@ -19,8 +19,10 @@ alias ll='exa -lahF'
 alias ls='exa -F'
 alias lt='exa -lahF --tree'
 
-export PATH=$HOME/.local/bin:$PATH
-eval "$(zoxide init bash)"
+HOMEBREW_BIN=${HOME}/homebrew/bin
+
+export PATH=$HOME/.local/bin:${HOMEBREW_BIN}:$PATH
+eval "$(${HOMEBREW_BIN}/zoxide init bash)"
 
 # ensure CTRL-S doesn't block the terminal
 if [[ -t 0 && $- = *i* ]]
@@ -32,7 +34,7 @@ export EDITOR="nvim";
 export PYTHONSTARTUP=~/.config/python/pythonrc.py
 
 if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
-  eval "$(/home/hhoeflin/homebrew/bin/starship init bash --print-full-init)"
+  eval "$(${HOMEBREW_BIN}/starship init bash --print-full-init)"
 fi
 
-eval "$(/nix/store/wa78vfnl5qarnrmsgzfxahi662cvdr47-mcfly-0.6.0/bin/mcfly init bash)"
+eval "$(${HOMEBREW_BIN}/mcfly init bash)"
