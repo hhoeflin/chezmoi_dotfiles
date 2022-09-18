@@ -19,7 +19,8 @@ alias ll='exa -lahF'
 alias ls='exa -F'
 alias lt='exa -lahF --tree'
 
-HOMEBREW_BIN=${HOME}/homebrew/bin
+HOMEBREW_DIR=${HOME}/homebrew
+HOMEBREW_BIN=${HOMEBREW_DIR}/bin
 
 export PATH=$HOME/.local/bin:${HOMEBREW_BIN}:$PATH
 eval "$(${HOMEBREW_BIN}/zoxide init bash)"
@@ -32,9 +33,13 @@ fi
 
 export EDITOR="nvim";
 export PYTHONSTARTUP=~/.config/python/pythonrc.py
+export TERM=xterm
 
 if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
   eval "$(${HOMEBREW_BIN}/starship init bash --print-full-init)"
 fi
 
 eval "$(${HOMEBREW_BIN}/mcfly init bash)"
+
+source ${HOMEBREW_DIR}/opt/lmod/init/profile
+export MODULEPATH=${HOME}/.config/modules:${MODULEPATH:+:${MODULEPATH}}
