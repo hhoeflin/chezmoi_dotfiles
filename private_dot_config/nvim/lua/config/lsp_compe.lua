@@ -114,7 +114,7 @@ require'compe'.setup {
     treesitter = true;
     -- tmux = true;
     luasnip = true;
-    tabnine = true;
+    tabnine = false;
   };
 }
 

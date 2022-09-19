@@ -1,3 +1,6 @@
+-- load packer
+require('config.packer')
+
 -- general settings
 require('config.settings')
 
