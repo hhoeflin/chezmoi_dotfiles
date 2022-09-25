@@ -31,3 +31,8 @@ brew "pyright"
 
 tap "go-task/homebrew-tap"
 brew "go-task"
+
+tap "hhoeflin/tap"
+brew "zotero"
+brew "mambaforge"
+brew "buildg"
