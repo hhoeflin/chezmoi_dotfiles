@@ -21,7 +21,7 @@ ${APP_PREFIX}/bin/cmake: cmake-${VERSION}.tar.gz
 	tar zxvf cmake-${VERSION}.tar.gz
 	cd cmake-${VERSION}
 	./bootstrap --prefix=${APP_PREFIX}
-	make -j && make install
+	$(MAKE) -j && $(MAKE) install
 
 
 .PHONY: clean

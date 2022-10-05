@@ -26,10 +26,14 @@ ${APP_PREFIX}/bin/tmux: tmux-${VERSION}.tar.gz | deps
 	# the CPPFLAGS and LDFLAGS are important, make sure you have written them correctly, or the build will fail
 	./configure --prefix=${APP_PREFIX} \
 		CPPFLAGS="-I${PREFIX}/libevent/include -I${PREFIX}/ncurses/include/ncurses" \
-		LDFLAGS="-L${PREFIX}/libevent/lib"
-	make -j && make install
+		LDFLAGS="-L${PREFIX}/libevent/lib -L${PREFIX}/ncurses/lib"
+	$(MAKE) -j && $(MAKE) install
 
 .PHONY: clean
 clean:
 	rm -rf tmux-${VERSION}
 	rm -f tmux-${VERSION}.tar.gz
+
+.PHONY: uninstall
+uninstall:
+	rm -rf ${APP_PREFIX}

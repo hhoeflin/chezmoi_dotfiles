@@ -20,12 +20,13 @@ ${APP_PREFIX}/lib/libevent.a: libevent-${VERSION}-stable.tar.gz
 	mkdir -p ${APP_PREFIX}
 	# install libevent under $HOME/local
 	./configure --prefix=${APP_PREFIX}
-	make -j && make install
-
-
-
+	$(MAKE) -j && $(MAKE) install
 
 .PHONY: clean
 clean:
 	rm -rf libevent-${VERSION}-stable
 	rm -f libevent-${VERSION}-stable.tar.gz
+
+.PHONY: uninstall
+uninstall:
+	rm -rf ${APP_PREFIX}

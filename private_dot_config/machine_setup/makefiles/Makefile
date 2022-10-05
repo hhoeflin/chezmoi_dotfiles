@@ -3,6 +3,7 @@
 PREFIX=${HOME}/.local
 export PREFIX
 
+.PHONY: all
 all:
 	$(MAKE) -C libevent all
 	$(MAKE) -C ncurses all
@@ -12,7 +13,7 @@ all:
 	$(MAKE) -C rust all
 	$(MAKE) -C cmake all
 
-
+.PHONY: clean
 clean:
 	$(MAKE) -C libevent clean
 	$(MAKE) -C ncurses clean
@@ -22,6 +23,15 @@ clean:
 	$(MAKE) -C rust clean
 	$(MAKE) -C cmake clean
 
+.PHONY: uninstall
+uninstall:
+	$(MAKE) -C libevent uninstall
+	$(MAKE) -C ncurses uninstall
+	$(MAKE) -C tmux uninstall
+	$(MAKE) -C mambaforge uninstall
+	$(MAKE) -C golang uninstall
+	$(MAKE) -C rust uninstall
+	$(MAKE) -C cmake uninstall
 
 
 #brew "bat"

@@ -17,12 +17,13 @@ ${APP_PREFIX}/include/ncurses/ncurses.h: ncurses-${VERSION}.tar.gz
 	tar zxvf ncurses-${VERSION}.tar.gz
 	cd ncurses-${VERSION}/
 	./configure --prefix=${APP_PREFIX}
-	make -j&& make install
-
-
-
+	$(MAKE) -j && $(MAKE) install
 
 .PHONY: clean
 clean:
 	rm -rf ncurses-${VERSION}
 	rm -f ncurses-${VERSION}.tar.gz
+
+.PHONY: uninstall
+uninstall:
+	rm -rf ${APP_PREFIX}
