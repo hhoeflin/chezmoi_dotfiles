@@ -9,6 +9,8 @@ all:
 	$(MAKE) -C tmux all
 	$(MAKE) -C mambaforge all
 	$(MAKE) -C golang all
+	$(MAKE) -C rust all
+	$(MAKE) -C cmake all
 
 
 clean:
@@ -17,11 +19,11 @@ clean:
 	$(MAKE) -C tmux clean
 	$(MAKE) -C mambaforge clean
 	$(MAKE) -C golang clean
+	$(MAKE) -C rust clean
+	$(MAKE) -C cmake clean
 
 
 
-# tap "homebrew/bundle"
-#tap "homebrew/core"
 #brew "bat"
 #brew "broot"
 #brew "exa"
@@ -34,7 +36,6 @@ clean:
 #brew "neovim"
 #brew "ripgrep"
 #brew "tldr"
-#brew "cmake"
 #brew "icdiff"
 #brew "zoxide"
 #brew "dust"

@@ -1,23 +1,22 @@
 .ONESHELL:
 
-
 ifndef PREFIX
 $(error PREFIX is not set)
 endif
 
-LOCAL_PREFIX=${PREFIX}/go
+APP_PREFIX=${PREFIX}/go
 VERSION=1.19.2
 
 .PHONY: all
-all: ${LOCAL_PREFIX}/bin/go
+all: ${APP_PREFIX}/bin/go
 
 go${VERSION}.linux-amd64.tar.gz:
 	wget https://go.dev/dl/go${VERSION}.linux-amd64.tar.gz
 
 
-${LOCAL_PREFIX}/bin/go: go${VERSION}.linux-amd64.tar.gz
+${APP_PREFIX}/bin/go: go${VERSION}.linux-amd64.tar.gz
 	tar zxvf go${VERSION}.linux-amd64.tar.gz --directory ${PREFIX}
-	touch ${LOCAL_PREFIX}/bin/go
+	touch ${APP_PREFIX}/bin/go
 
 .PHONY: clean
 clean:
@@ -25,4 +24,4 @@ clean:
 
 .PHONY: uninstall
 uninstall:
-	rm -rf ${LOCAL_PREFIX}
+	rm -rf ${APP_PREFIX}

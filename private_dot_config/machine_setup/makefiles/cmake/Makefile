@@ -6,21 +6,21 @@ endif
 
 VERSION=3.24.2
 
-LOCAL_PREFIX=${PREFIX}/cmake
+APP_PREFIX=${PREFIX}/cmake
 
 .PHONY: all
 
-all: ${LOCAL_PREFIX}/bin/cmake
+all: ${APP_PREFIX}/bin/cmake
 
 cmake-${VERSION}.tar.gz:
 	wget https://github.com/Kitware/CMake/releases/download/v${VERSION}/cmake-${VERSION}.tar.gz
 
 
 
-${LOCAL_PREFIX}/bin/cmake: cmake-${VERSION}.tar.gz
+${APP_PREFIX}/bin/cmake: cmake-${VERSION}.tar.gz
 	tar zxvf cmake-${VERSION}.tar.gz
 	cd cmake-${VERSION}
-	./bootstrap --prefix=${LOCAL_PREFIX}
+	./bootstrap --prefix=${APP_PREFIX}
 	make -j && make install
 
 
@@ -31,4 +31,4 @@ clean:
 
 .PHONY: uninstall
 uninstall:
-	rm -rf ${LOCAL_PREFIX}
+	rm -rf ${APP_PREFIX}
