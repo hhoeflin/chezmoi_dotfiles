@@ -21,6 +21,9 @@ all:
 	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr all
 	$(MAKE) -C rust_app APP=zoxide all
 	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust all
+	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd all
+	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta all
+	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm all
 
 .PHONY: clean
 clean:
@@ -40,6 +43,9 @@ clean:
 	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr clean
 	$(MAKE) -C rust_app APP=zoxide clean
 	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust clean
+	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd clean
+	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta clean
+	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm clean
 
 .PHONY: uninstall
 uninstall:
@@ -59,16 +65,16 @@ uninstall:
 	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr uninstall
 	$(MAKE) -C rust_app APP=zoxide uninstall
 	$(MAKE) -C rust_app APP=dust APP_BINARY=dust uninstall
+	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd uninstall
+	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta uninstall
+	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm uninstall
 
 
-#brew "fd"  # rust
 #brew "fzf"
-#brew "git"
 #brew "glow"  # go
 #brew "htop"  # use rust bottom
 #brew "lazygit"  # go
 #brew "neovim"   # cmake
-#brew "icdiff"  # use rust delta
 #brew "duf"  # go
 #brew "mcfly"  # rust
 

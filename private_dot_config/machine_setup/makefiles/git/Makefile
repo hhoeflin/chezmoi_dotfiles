@@ -16,7 +16,7 @@ git-${VERSION}.tar.gz:
 
 
 
-${APP_PREFIX}/bin/tmux: git-${VERSION}.tar.gz
+${APP_PREFIX}/bin/git: git-${VERSION}.tar.gz
 	tar zxvf git-${VERSION}.tar.gz
 	cd git-${VERSION}
 	make configure
