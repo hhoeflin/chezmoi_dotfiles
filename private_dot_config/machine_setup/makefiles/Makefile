@@ -4,26 +4,27 @@ PREFIX=${HOME}/.local
 export PREFIX
 
 .PHONY: all
-all:
-	$(MAKE) -C libevent all
-	$(MAKE) -C ncurses all
-	$(MAKE) -C tmux all
-	$(MAKE) -C mambaforge all
-	$(MAKE) -C golang all
-	$(MAKE) -C rust all
-	$(MAKE) -C cmake all
-	$(MAKE) -C git all
+all clean uninstall:
+	$(MAKE) -C libevent $@
+	$(MAKE) -C ncurses $@
+	$(MAKE) -C tmux $@
+	$(MAKE) -C mambaforge $@
+	$(MAKE) -C golang $@
+	$(MAKE) -C rust $@
+	$(MAKE) -C cmake $@
+	$(MAKE) -C git $@
 	# rust apps
-	$(MAKE) -C rust_app APP=bat all
-	$(MAKE) -C rust_app APP=exa all
-	$(MAKE) -C rust_app APP=broot all
-	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg all
-	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr all
-	$(MAKE) -C rust_app APP=zoxide all
-	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust all
-	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd all
-	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta all
-	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm all
+	$(MAKE) -C rust_app APP=bat $@
+	$(MAKE) -C rust_app APP=exa $@
+	$(MAKE) -C rust_app APP=broot $@
+	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg $@
+	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr $@
+	$(MAKE) -C rust_app APP=zoxide $@
+	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust $@
+	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd $@
+	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta $@
+	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm $@
+	$(MAKE) -C rust_app APP=mcfly APP_BINARY=mcfly $@
 
 .PHONY: clean
 clean:
