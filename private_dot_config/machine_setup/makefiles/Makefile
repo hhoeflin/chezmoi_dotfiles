@@ -12,6 +12,15 @@ all:
 	$(MAKE) -C golang all
 	$(MAKE) -C rust all
 	$(MAKE) -C cmake all
+	$(MAKE) -C git all
+	# rust apps
+	$(MAKE) -C rust_app APP=bat all
+	$(MAKE) -C rust_app APP=exa all
+	$(MAKE) -C rust_app APP=broot all
+	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg all
+	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr all
+	$(MAKE) -C rust_app APP=zoxide all
+	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust all
 
 .PHONY: clean
 clean:
@@ -22,6 +31,15 @@ clean:
 	$(MAKE) -C golang clean
 	$(MAKE) -C rust clean
 	$(MAKE) -C cmake clean
+	$(MAKE) -C git clean
+	# rust apps
+	$(MAKE) -C rust_app APP=bat clean
+	$(MAKE) -C rust_app APP=exa clean
+	$(MAKE) -C rust_app APP=broot clean
+	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg clean
+	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr clean
+	$(MAKE) -C rust_app APP=zoxide clean
+	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust clean
 
 .PHONY: uninstall
 uninstall:
@@ -32,25 +50,27 @@ uninstall:
 	$(MAKE) -C golang uninstall
 	$(MAKE) -C rust uninstall
 	$(MAKE) -C cmake uninstall
+	$(MAKE) -C git uninstall
+	# rust apps
+	$(MAKE) -C rust_app APP=bat uninstall
+	$(MAKE) -C rust_app APP=exa uninstall
+	$(MAKE) -C rust_app APP=broot uninstall
+	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg uninstall
+	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr uninstall
+	$(MAKE) -C rust_app APP=zoxide uninstall
+	$(MAKE) -C rust_app APP=dust APP_BINARY=dust uninstall
 
 
-#brew "bat"
-#brew "broot"
-#brew "exa"
-#brew "fd"
+#brew "fd"  # rust
 #brew "fzf"
 #brew "git"
-#brew "glow"
-#brew "htop"
-#brew "lazygit"
-#brew "neovim"
-#brew "ripgrep"
-#brew "tldr"
-#brew "icdiff"
-#brew "zoxide"
-#brew "dust"
-#brew "duf"
-#brew "mcfly"
+#brew "glow"  # go
+#brew "htop"  # use rust bottom
+#brew "lazygit"  # go
+#brew "neovim"   # cmake
+#brew "icdiff"  # use rust delta
+#brew "duf"  # go
+#brew "mcfly"  # rust
 
 #brew "python"
 #brew "mypy"
@@ -60,7 +80,7 @@ uninstall:
 
 
 #tap "go-task/homebrew-tap"
-#brew "go-task"
+#brew "go-task"  # go
 
 #tap "hhoeflin/tap"
 #brew "zotero"
