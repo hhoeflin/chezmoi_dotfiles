@@ -8,6 +8,7 @@ endif
 LOCAL_PREFIX=${PREFIX}/mambaforge
 VERSION=4.14.0-0
 
+.PHONY: all
 all: ${LOCAL_PREFIX}/bin/mamba
 
 Mambaforge-${VERSION}-Linux-x86_64.sh:

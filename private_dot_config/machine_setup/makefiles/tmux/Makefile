@@ -6,6 +6,8 @@ endif
 
 VERSION=3.3a
 
+.PHONY: all
+
 all: ${PREFIX}/bin/tmux
 
 tmux-${VERSION}.tar.gz:
@@ -14,8 +16,8 @@ tmux-${VERSION}.tar.gz:
 
 .PHONY: deps
 deps:
-	make -C ../libevent
-	make -C ../ncurses
+	$(MAKE) -C ../libevent
+	$(MAKE) -C ../ncurses
 
 ${PREFIX}/bin/tmux: tmux-${VERSION}.tar.gz | deps
 	tar zxvf tmux-${VERSION}.tar.gz

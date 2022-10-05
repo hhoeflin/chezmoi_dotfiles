@@ -6,6 +6,7 @@ endif
 
 VERSION=2.1.12
 
+.PHONY: all
 all: ${PREFIX}/lib/libevent.a
 
 libevent-${VERSION}-stable.tar.gz:
