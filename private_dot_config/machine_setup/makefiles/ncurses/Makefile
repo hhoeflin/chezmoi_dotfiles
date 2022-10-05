@@ -4,18 +4,19 @@ ifndef PREFIX
 $(error PREFIX is not set)
 endif
 
+APP_PREFIX=${PREFIX}/ncurses
 VERSION=6.3
 
-all: ${PREFIX}/include/ncurses/ncurses.h
+all: ${APP_PREFIX}/include/ncurses/ncurses.h
 
 ncurses-${VERSION}.tar.gz:
 	wget https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${VERSION}.tar.gz
 
 
-${PREFIX}/include/ncurses/ncurses.h: ncurses-${VERSION}.tar.gz
+${APP_PREFIX}/include/ncurses/ncurses.h: ncurses-${VERSION}.tar.gz
 	tar zxvf ncurses-${VERSION}.tar.gz
 	cd ncurses-${VERSION}/
-	./configure --prefix=${PREFIX}
+	./configure --prefix=${APP_PREFIX}
 	make -j&& make install
 
 

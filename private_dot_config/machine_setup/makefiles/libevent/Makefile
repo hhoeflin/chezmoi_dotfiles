@@ -4,21 +4,22 @@ ifndef PREFIX
 $(error PREFIX is not set)
 endif
 
+APP_PREFIX=${PREFIX}/libevent
 VERSION=2.1.12
 
 .PHONY: all
-all: ${PREFIX}/lib/libevent.a
+all: ${APP_PREFIX}/lib/libevent.a
 
 libevent-${VERSION}-stable.tar.gz:
 	wget https://github.com/libevent/libevent/releases/download/release-${VERSION}-stable/libevent-${VERSION}-stable.tar.gz
 
 
-${PREFIX}/lib/libevent.a: libevent-${VERSION}-stable.tar.gz
+${APP_PREFIX}/lib/libevent.a: libevent-${VERSION}-stable.tar.gz
 	tar zxvf libevent-${VERSION}-stable.tar.gz
 	cd libevent-${VERSION}-stable
-	mkdir -p ${PREFIX}
+	mkdir -p ${APP_PREFIX}
 	# install libevent under $HOME/local
-	./configure --prefix=${PREFIX}
+	./configure --prefix=${APP_PREFIX}
 	make -j && make install
 
 

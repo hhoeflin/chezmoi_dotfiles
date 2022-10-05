@@ -4,11 +4,12 @@ ifndef PREFIX
 $(error PREFIX is not set)
 endif
 
+APP_PREFIX=${PREFIX}/tmux
 VERSION=3.3a
 
 .PHONY: all
 
-all: ${PREFIX}/bin/tmux
+all: ${APP_PREFIX}/bin/tmux
 
 tmux-${VERSION}.tar.gz:
 	wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
@@ -19,17 +20,14 @@ deps:
 	$(MAKE) -C ../libevent
 	$(MAKE) -C ../ncurses
 
-${PREFIX}/bin/tmux: tmux-${VERSION}.tar.gz | deps
+${APP_PREFIX}/bin/tmux: tmux-${VERSION}.tar.gz | deps
 	tar zxvf tmux-${VERSION}.tar.gz
 	cd tmux-${VERSION}
 	# the CPPFLAGS and LDFLAGS are important, make sure you have written them correctly, or the build will fail
-	./configure --prefix=${PREFIX} \
-		CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/ncurses" \
-		LDFLAGS="-L${PREFIX}/lib"
+	./configure --prefix=${APP_PREFIX} \
+		CPPFLAGS="-I${PREFIX}/libevent/include -I${PREFIX}/ncurses/include/ncurses" \
+		LDFLAGS="-L${PREFIX}/libevent/lib"
 	make -j && make install
-
-
-
 
 .PHONY: clean
 clean:
