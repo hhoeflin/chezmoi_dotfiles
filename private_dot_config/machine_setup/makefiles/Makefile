@@ -18,6 +18,8 @@ all clean uninstall:
 	$(MAKE) -C pyenv $@
 	$(MAKE) -C pipx $@
 	$(MAKE) -C zotero $@
+	$(MAKE) -C buildg $@
+	$(MAKE) -C lua $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@
 	$(MAKE) -C rust_app APP=exa $@
@@ -46,7 +48,3 @@ all clean uninstall:
 #brew "fzf"
 
 #brew "python"
-
-#tap "hhoeflin/tap"
-#brew "zotero"
-#brew "buildg"
