@@ -9,12 +9,10 @@ VERSION=2.38.0
 
 .PHONY: all
 
-all: ${APP_PREFIX}/bin/tmux
+all: ${APP_PREFIX}/bin/git
 
 git-${VERSION}.tar.gz:
 	wget https://www.kernel.org/pub/software/scm/git/git-${VERSION}.tar.gz
-
-
 
 ${APP_PREFIX}/bin/git: git-${VERSION}.tar.gz
 	tar zxvf git-${VERSION}.tar.gz

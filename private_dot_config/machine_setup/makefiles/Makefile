@@ -5,6 +5,7 @@ export PREFIX
 
 .PHONY: all clean uninstall
 all clean uninstall:
+	set -e
 	$(MAKE) -C libevent $@
 	$(MAKE) -C ncurses $@
 	$(MAKE) -C tmux $@
@@ -16,6 +17,7 @@ all clean uninstall:
 	$(MAKE) -C neovim $@
 	$(MAKE) -C pyenv $@
 	$(MAKE) -C pipx $@
+	$(MAKE) -C zotero $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@
 	$(MAKE) -C rust_app APP=exa $@
@@ -44,9 +46,6 @@ all clean uninstall:
 #brew "fzf"
 
 #brew "python"
-#brew "pyright"
-
-
 
 #tap "hhoeflin/tap"
 #brew "zotero"
