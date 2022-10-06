@@ -33,6 +33,7 @@ all clean uninstall:
 	$(MAKE) -C go_app APP_URL=github.com/jesseduffield/lazygit@latest APP_BINARY=lazygit $@
 	$(MAKE) -C go_app APP_URL=github.com/muesli/duf@latest APP_BINARY=duf $@
 	$(MAKE) -C go_app APP_URL=github.com/go-task/task/v3/cmd/task@latest APP_BINARY=task $@
+	$(MAKE) -C go_app APP_URL=github.com/twpayne/chezmoi@latest APP_BINARY=chezmoi $@
 	# pipx apps
 	$(MAKE) -C pipx_app APP=isort $@
 	$(MAKE) -C pipx_app APP=mypy $@
