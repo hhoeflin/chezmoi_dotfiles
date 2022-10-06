@@ -3,7 +3,7 @@
 PREFIX=${HOME}/.local
 export PREFIX
 
-.PHONY: all
+.PHONY: all clean uninstall
 all clean uninstall:
 	$(MAKE) -C libevent $@
 	$(MAKE) -C ncurses $@
@@ -13,6 +13,8 @@ all clean uninstall:
 	$(MAKE) -C rust $@
 	$(MAKE) -C cmake $@
 	$(MAKE) -C git $@
+	$(MAKE) -C neovim $@
+	$(MAKE) -C pyenv $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@
 	$(MAKE) -C rust_app APP=exa $@
@@ -25,59 +27,14 @@ all clean uninstall:
 	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta $@
 	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm $@
 	$(MAKE) -C rust_app APP=mcfly APP_BINARY=mcfly $@
-
-.PHONY: clean
-clean:
-	$(MAKE) -C libevent clean
-	$(MAKE) -C ncurses clean
-	$(MAKE) -C tmux clean
-	$(MAKE) -C mambaforge clean
-	$(MAKE) -C golang clean
-	$(MAKE) -C rust clean
-	$(MAKE) -C cmake clean
-	$(MAKE) -C git clean
-	# rust apps
-	$(MAKE) -C rust_app APP=bat clean
-	$(MAKE) -C rust_app APP=exa clean
-	$(MAKE) -C rust_app APP=broot clean
-	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg clean
-	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr clean
-	$(MAKE) -C rust_app APP=zoxide clean
-	$(MAKE) -C rust_app APP=du-dust APP_BINARY=dust clean
-	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd clean
-	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta clean
-	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm clean
-
-.PHONY: uninstall
-uninstall:
-	$(MAKE) -C libevent uninstall
-	$(MAKE) -C ncurses uninstall
-	$(MAKE) -C tmux uninstall
-	$(MAKE) -C mambaforge uninstall
-	$(MAKE) -C golang uninstall
-	$(MAKE) -C rust uninstall
-	$(MAKE) -C cmake uninstall
-	$(MAKE) -C git uninstall
-	# rust apps
-	$(MAKE) -C rust_app APP=bat uninstall
-	$(MAKE) -C rust_app APP=exa uninstall
-	$(MAKE) -C rust_app APP=broot uninstall
-	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg uninstall
-	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr uninstall
-	$(MAKE) -C rust_app APP=zoxide uninstall
-	$(MAKE) -C rust_app APP=dust APP_BINARY=dust uninstall
-	$(MAKE) -C rust_app APP=fd-find APP_BINARY=fd uninstall
-	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta uninstall
-	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm uninstall
+	# go apps
+	$(MAKE) -C go_app APP_URL=github.com/charmbracelet/glow@latest APP_BINARY=glow $@
+	$(MAKE) -C go_app APP_URL=github.com/jesseduffield/lazygit@latest APP_BINARY=lazygit $@
+	$(MAKE) -C go_app APP_URL=github.com/muesli/duf@latest APP_BINARY=duf $@
+	$(MAKE) -C go_app APP_URL=github.com/go-task/task/v3/cmd/task@latest APP_BINARY=task $@
 
 
 #brew "fzf"
-#brew "glow"  # go
-#brew "htop"  # use rust bottom
-#brew "lazygit"  # go
-#brew "neovim"   # cmake
-#brew "duf"  # go
-#brew "mcfly"  # rust
 
 #brew "python"
 #brew "mypy"
@@ -86,8 +43,6 @@ uninstall:
 #brew "pyright"
 
 
-#tap "go-task/homebrew-tap"
-#brew "go-task"  # go
 
 #tap "hhoeflin/tap"
 #brew "zotero"
