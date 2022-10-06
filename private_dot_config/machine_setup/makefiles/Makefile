@@ -15,6 +15,7 @@ all clean uninstall:
 	$(MAKE) -C git $@
 	$(MAKE) -C neovim $@
 	$(MAKE) -C pyenv $@
+	$(MAKE) -C pipx $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@
 	$(MAKE) -C rust_app APP=exa $@
@@ -32,14 +33,16 @@ all clean uninstall:
 	$(MAKE) -C go_app APP_URL=github.com/jesseduffield/lazygit@latest APP_BINARY=lazygit $@
 	$(MAKE) -C go_app APP_URL=github.com/muesli/duf@latest APP_BINARY=duf $@
 	$(MAKE) -C go_app APP_URL=github.com/go-task/task/v3/cmd/task@latest APP_BINARY=task $@
+	# pipx apps
+	$(MAKE) -C pipx_app APP=isort $@
+	$(MAKE) -C pipx_app APP=mypy $@
+	$(MAKE) -C pipx_app APP=black $@
+	$(MAKE) -C pipx_app APP=pyright $@
 
 
 #brew "fzf"
 
 #brew "python"
-#brew "mypy"
-#brew "isort"
-#brew "black"
 #brew "pyright"
 
 
