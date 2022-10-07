@@ -19,7 +19,7 @@ ${APP_PREFIX}/bin/cargo: ${APP_DWNLOAD}
 	chmod 770 ${APP_DWNLOAD}
 	RUSTUP_HOME=${APP_PREFIX} CARGO_HOME=${APP_PREFIX}  ./${APP_DWNLOAD} --no-modify-path -y
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

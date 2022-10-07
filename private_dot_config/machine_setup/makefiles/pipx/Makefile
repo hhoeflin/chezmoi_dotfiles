@@ -24,7 +24,7 @@ ${APP_PREFIX}/conda_env/bin/pipx: | deps
 	mamba deactivate
 	mkdir -p ${APP_PREFIX}/bin
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

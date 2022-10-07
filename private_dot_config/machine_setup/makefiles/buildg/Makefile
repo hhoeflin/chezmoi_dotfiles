@@ -23,7 +23,7 @@ ${APP_PREFIX}/bin/buildg: ${APP_TARFILE}
 	tar xvf ${APP_TARFILE} --directory=${APP_PREFIX}
 	touch ${APP_PREFIX}/bin/buildg
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

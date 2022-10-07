@@ -21,7 +21,7 @@ ${APP_PREFIX}/bin/pyenv: ${APP_DWNLOAD}
 	chmod 770 ${APP_DWNLOAD}
 	bash ${APP_DWNLOAD}
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

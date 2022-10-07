@@ -25,7 +25,7 @@ ${APP_PREFIX}/bin/zotero: ${APP_TARFILE}
 	ln -sf ${APP_PREFIX}/zotero ${APP_PREFIX}/bin/zotero
 	touch ${APP_PREFIX}/bin/zotero
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

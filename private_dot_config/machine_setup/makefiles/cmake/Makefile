@@ -22,7 +22,7 @@ ${APP_PREFIX}/bin/cmake: ${APP_TARFILE}
 	./bootstrap --prefix=${APP_PREFIX}
 	$(MAKE) -j && $(MAKE) install
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

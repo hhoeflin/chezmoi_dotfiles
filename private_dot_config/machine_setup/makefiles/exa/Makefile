@@ -23,7 +23,7 @@ all: ${APP_PREFIX}/bin/${APP_BINARY} ${MODULE_PATH}
 ${APP_PREFIX}/bin/${APP_BINARY}: | deps
 	${CARGO_HOME}/bin/cargo install ${APP} --root ${APP_PREFIX}
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

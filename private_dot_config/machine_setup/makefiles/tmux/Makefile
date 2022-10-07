@@ -31,7 +31,7 @@ ${APP_PREFIX}/bin/tmux: ${APP_TARFILE} | deps
 		LDFLAGS="-L${PREFIX}/libevent/lib -L${PREFIX}/ncurses/lib"
 	$(MAKE) -j && $(MAKE) install
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

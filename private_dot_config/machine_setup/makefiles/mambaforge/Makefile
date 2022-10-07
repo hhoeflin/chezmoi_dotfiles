@@ -24,7 +24,7 @@ ${APP_PREFIX}/bin/mamba: ${APP_DWNLOAD}
 ${APP_PREFIX}/shell/init_bash.sh: mambaforge-init-template.sh
 	MAMBA_PATH=${APP_PREFIX} envsubst '$$MAMBA_PATH' < mambaforge-init-template.sh > ${APP_PREFIX}/shell/init_bash.sh
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

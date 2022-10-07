@@ -20,7 +20,7 @@ ${APP_PREFIX}/bin/go: ${APP_TARFILE}
 	tar zxvf ${APP_TARFILE} --directory ${PREFIX}
 	touch ${APP_PREFIX}/bin/go
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

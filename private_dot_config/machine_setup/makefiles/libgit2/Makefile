@@ -27,7 +27,7 @@ ${APP_PREFIX}/lib/libgit2.so: ${APP_TARFILE} | deps
 	cmake .. -DCMAKE_INSTALL_PREFIX=${APP_PREFIX}
 	cmake --build . --target install
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

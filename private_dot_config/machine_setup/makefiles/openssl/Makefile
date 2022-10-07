@@ -23,7 +23,7 @@ ${APP_PREFIX}/lib/libssl.so.1.1: ${APP_TARFILE}
 	./config --prefix=${APP_PREFIX}
 	$(MAKE) -j && $(MAKE) install
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 

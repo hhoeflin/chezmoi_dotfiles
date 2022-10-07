@@ -27,7 +27,7 @@ ${APP_PREFIX}/bin/nvim: ${APP_TARFILE} | deps
 	make CMAKE_BUILD_TYPE=Release
 	make CMAKE_INSTALL_PREFIX=${APP_PREFIX} install
 
-${MODULE_PATH}:
+${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})
 	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 
