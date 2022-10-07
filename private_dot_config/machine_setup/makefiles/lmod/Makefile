@@ -11,7 +11,7 @@ LUA_VERSION=$(shell ${PREFIX}/lua/bin/lua -e "print(_VERSION)" | cut --character
 
 .PHONY: all
 
-all: ${APP_PREFIX}/bin/lmod
+all: ${APP_PREFIX}/lmod/init/profile
 
 ${VERSION}.tar.gz:
 	wget https://github.com/TACC/Lmod/archive/refs/tags/${VERSION}.tar.gz
@@ -20,7 +20,7 @@ ${VERSION}.tar.gz:
 deps:
 	$(MAKE) -C ../luarocks
 
-${APP_PREFIX}/bin/lmod: ${VERSION}.tar.gz | deps
+${APP_PREFIX}/lmod/init/profile: ${VERSION}.tar.gz | deps
 	set -e
 	export PATH=${PREFIX}/lua/bin:${PREFIX}/bin/luarocks:${PATH}
 	export LUA_PATH="${LUAROCKS_PREFIX}/share/lua/${LUA_VERSION}/?.lua;${LUAROCKS_PREFIX}/share/lua/${LUA_VERSION}/?/init.lua;;"

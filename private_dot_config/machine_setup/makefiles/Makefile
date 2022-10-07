@@ -6,8 +6,6 @@ export PREFIX
 .PHONY: all clean uninstall
 all clean uninstall:
 	set -e
-	$(MAKE) -C libevent $@
-	$(MAKE) -C ncurses $@
 	$(MAKE) -C tmux $@
 	$(MAKE) -C mambaforge $@
 	$(MAKE) -C golang $@
@@ -22,9 +20,9 @@ all clean uninstall:
 	$(MAKE) -C lua $@
 	$(MAKE) -C luarocks $@
 	$(MAKE) -C lmod $@
+	$(MAKE) -C exa $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@
-	$(MAKE) -C rust_app APP=exa $@
 	$(MAKE) -C rust_app APP=broot $@
 	$(MAKE) -C rust_app APP=ripgrep APP_BINARY=rg $@
 	$(MAKE) -C rust_app APP=tealdeer APP_BINARY=tldr $@
