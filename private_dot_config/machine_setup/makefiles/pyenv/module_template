@@ -1,0 +1,7 @@
+help([[
+pyenv module by Holger Hoefling
+]])
+
+load("home/openssl")
+
+prepend_path( "PATH","${APP_PREFIX}/bin")

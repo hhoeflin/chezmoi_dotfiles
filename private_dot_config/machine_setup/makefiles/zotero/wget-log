@@ -1,0 +1,6 @@
+--2022-10-06 07:30:47--  https://www.zotero.org/download/client/dl?channel=release
+Resolving www.zotero.org (www.zotero.org)... 54.163.185.16, 52.21.44.160
+Connecting to www.zotero.org (www.zotero.org)|54.163.185.16|:443... connected.
+HTTP request sent, awaiting response... 400 Bad Request
+2022-10-06 07:30:48 ERROR 400: Bad Request.
+

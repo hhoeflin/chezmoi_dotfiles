@@ -50,8 +50,4 @@ all clean uninstall:
 #brew "python"
 
 # make modules for
-# git
-# pyenv
-# pipx
-# zotero
 # buildg
