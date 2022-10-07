@@ -32,6 +32,7 @@ all clean uninstall:
 	$(MAKE) -C rust_app APP=git-delta APP_BINARY=delta $@
 	$(MAKE) -C rust_app APP=bottom APP_BINARY=btm $@
 	$(MAKE) -C rust_app APP=mcfly APP_BINARY=mcfly $@
+	$(MAKE) -C rust_app APP=starship $@
 	# go apps
 	$(MAKE) -C go_app APP_URL=github.com/charmbracelet/glow@latest APP_BINARY=glow $@
 	$(MAKE) -C go_app APP_URL=github.com/jesseduffield/lazygit@latest APP_BINARY=lazygit $@
