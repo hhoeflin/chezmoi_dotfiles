@@ -5,21 +5,27 @@ $(error PREFIX is not set)
 endif
 
 APP_PREFIX=${PREFIX}/cargo
+MODULE_PATH=${PREFIX}/modules/home/rust/default.lua
+APP_DWNLOAD=rustup.sh
 
 .PHONY: all
-all: ${APP_PREFIX}/bin/cargo
+all: ${APP_PREFIX}/bin/cargo ${MODULE_PATH}
 
-rustup.sh:
-	wget --output-document rustup.sh https://sh.rustup.rs
+${APP_DWNLOAD}:
+	wget --output-document ${APP_DWNLOAD} https://sh.rustup.rs
 
 
-${APP_PREFIX}/bin/cargo: rustup.sh
-	chmod 770 rustup.sh
-	RUSTUP_HOME=${APP_PREFIX} CARGO_HOME=${APP_PREFIX}  ./rustup.sh --no-modify-path -y
+${APP_PREFIX}/bin/cargo: ${APP_DWNLOAD}
+	chmod 770 ${APP_DWNLOAD}
+	RUSTUP_HOME=${APP_PREFIX} CARGO_HOME=${APP_PREFIX}  ./${APP_DWNLOAD} --no-modify-path -y
+
+${MODULE_PATH}:
+	mkdir -p $$(dirname ${MODULE_PATH})
+	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 
 .PHONY: clean
 clean:
-	rm -f rushup.sh
+	rm -f ${APP_DWNLOAD}
 
 .PHONY: uninstall
 uninstall:
