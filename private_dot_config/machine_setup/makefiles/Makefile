@@ -48,3 +48,10 @@ all clean uninstall:
 #brew "fzf"
 
 #brew "python"
+
+# make modules for
+# git
+# pyenv
+# pipx
+# zotero
+# buildg

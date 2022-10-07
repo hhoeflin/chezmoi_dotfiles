@@ -4,30 +4,32 @@ ifndef PREFIX
 $(error PREFIX is not set)
 endif
 
-VERSION=3.24.2
-
 APP_PREFIX=${PREFIX}/cmake
+VERSION=3.24.2
+MODULE_PATH=${PREFIX}/modules/home/cmake/default.lua
+APP_TARFILE=cmake-${VERSION}.tar.gz
 
 .PHONY: all
 
-all: ${APP_PREFIX}/bin/cmake
+all: ${APP_PREFIX}/bin/cmake ${MODULE_PATH}
 
-cmake-${VERSION}.tar.gz:
-	wget https://github.com/Kitware/CMake/releases/download/v${VERSION}/cmake-${VERSION}.tar.gz
+${APP_TARFILE}:
+	wget https://github.com/Kitware/CMake/releases/download/v${VERSION}/${APP_TARFILE}
 
-
-
-${APP_PREFIX}/bin/cmake: cmake-${VERSION}.tar.gz
-	tar zxvf cmake-${VERSION}.tar.gz
+${APP_PREFIX}/bin/cmake: ${APP_TARFILE}
+	tar zxvf ${APP_TARFILE}
 	cd cmake-${VERSION}
 	./bootstrap --prefix=${APP_PREFIX}
 	$(MAKE) -j && $(MAKE) install
 
+${MODULE_PATH}:
+	mkdir -p $$(dirname ${MODULE_PATH})
+	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 
 .PHONY: clean
 clean:
 	rm -rf cmake-${VERSION}
-	rm -f cmake-${VERSION}.tar.gz
+	rm -f ${APP_TARFILE}
 
 .PHONY: uninstall
 uninstall:
