@@ -6,26 +6,31 @@ endif
 
 APP_PREFIX=${PREFIX}/libevent
 VERSION=2.1.12
+MODULE_PATH=${PREFIX}/modules/home/libevent/default.lua
+APP_TARFILE=libevent-${VERSION}-stable.tar.gz
 
 .PHONY: all
-all: ${APP_PREFIX}/lib/libevent.a
+all: ${APP_PREFIX}/lib/libevent.a ${MODULE_PATH}
 
-libevent-${VERSION}-stable.tar.gz:
-	wget https://github.com/libevent/libevent/releases/download/release-${VERSION}-stable/libevent-${VERSION}-stable.tar.gz
+${APP_TARFILE}:
+	wget https://github.com/libevent/libevent/releases/download/release-${VERSION}-stable/${APP_TARFILE}
 
 
-${APP_PREFIX}/lib/libevent.a: libevent-${VERSION}-stable.tar.gz
-	tar zxvf libevent-${VERSION}-stable.tar.gz
+${APP_PREFIX}/lib/libevent.a: ${APP_TARFILE}
+	tar zxvf ${APP_TARFILE}
 	cd libevent-${VERSION}-stable
 	mkdir -p ${APP_PREFIX}
-	# install libevent under $HOME/local
 	./configure --prefix=${APP_PREFIX}
 	$(MAKE) -j && $(MAKE) install
+
+${MODULE_PATH}:
+	mkdir -p $$(dirname ${MODULE_PATH})
+	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
 
 .PHONY: clean
 clean:
 	rm -rf libevent-${VERSION}-stable
-	rm -f libevent-${VERSION}-stable.tar.gz
+	rm -f ${APP_TARFILE}
 
 .PHONY: uninstall
 uninstall:

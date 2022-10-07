@@ -6,10 +6,11 @@ endif
 
 APP_PREFIX=${PREFIX}/tmux
 VERSION=3.3a
+MODULE_PATH=${PREFIX}/modules/home/tmux/default.lua
 
 .PHONY: all
 
-all: ${APP_PREFIX}/bin/tmux
+all: ${APP_PREFIX}/bin/tmux ${MODULE_PATH}
 
 tmux-${VERSION}.tar.gz:
 	wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
@@ -28,6 +29,11 @@ ${APP_PREFIX}/bin/tmux: tmux-${VERSION}.tar.gz | deps
 		CPPFLAGS="-I${PREFIX}/libevent/include -I${PREFIX}/ncurses/include/ncurses" \
 		LDFLAGS="-L${PREFIX}/libevent/lib -L${PREFIX}/ncurses/lib"
 	$(MAKE) -j && $(MAKE) install
+
+${MODULE_PATH}:
+	mkdir -p $$(dirname ${MODULE_PATH})
+	APP_PREFIX=${APP_PREFIX} envsubst '$$APP_PREFIX' < module_template > ${MODULE_PATH}
+
 
 .PHONY: clean
 clean:

@@ -20,6 +20,8 @@ all clean uninstall:
 	$(MAKE) -C zotero $@
 	$(MAKE) -C buildg $@
 	$(MAKE) -C lua $@
+	$(MAKE) -C luarocks $@
+	$(MAKE) -C lmod $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@
 	$(MAKE) -C rust_app APP=exa $@
