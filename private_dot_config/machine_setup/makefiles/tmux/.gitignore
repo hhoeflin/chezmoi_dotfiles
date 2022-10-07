@@ -1,4 +1,1 @@
-*
-!.gitignore
-!Makefile
-!module_template
+tmux-*
