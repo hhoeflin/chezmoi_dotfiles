@@ -7,13 +7,14 @@ endif
 APP_PREFIX=${PREFIX}/tmux
 VERSION=3.3a
 MODULE_PATH=${PREFIX}/modules/home/tmux/default.lua
+APP_TARFILE=tmux-${VERSION}.tar.gz
 
 .PHONY: all
 
 all: ${APP_PREFIX}/bin/tmux ${MODULE_PATH}
 
-tmux-${VERSION}.tar.gz:
-	wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
+${APP_TARFILE}:
+	wget https://github.com/tmux/tmux/releases/download/${VERSION}/${APP_TARFILE}
 
 
 .PHONY: deps
@@ -21,8 +22,8 @@ deps:
 	$(MAKE) -C ../libevent
 	$(MAKE) -C ../ncurses
 
-${APP_PREFIX}/bin/tmux: tmux-${VERSION}.tar.gz | deps
-	tar zxvf tmux-${VERSION}.tar.gz
+${APP_PREFIX}/bin/tmux: ${APP_TARFILE} | deps
+	tar zxvf ${APP_TARFILE}
 	cd tmux-${VERSION}
 	# the CPPFLAGS and LDFLAGS are important, make sure you have written them correctly, or the build will fail
 	./configure --prefix=${APP_PREFIX} \
@@ -38,7 +39,7 @@ ${MODULE_PATH}:
 .PHONY: clean
 clean:
 	rm -rf tmux-${VERSION}
-	rm -f tmux-${VERSION}.tar.gz
+	rm -f ${APP_TARFILE}
 
 .PHONY: uninstall
 uninstall:
