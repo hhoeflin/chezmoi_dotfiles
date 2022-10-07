@@ -20,6 +20,8 @@ ${APP_PREFIX}/bin/pyenv: ${APP_DWNLOAD}
 	export PYENV_ROOT=${APP_PREFIX}
 	chmod 770 ${APP_DWNLOAD}
 	bash ${APP_DWNLOAD}
+	mkdir -p ${APP_PREFIX}/shell
+	${APP_PREFIX}/bin/pyenv init - > ${APP_PREFIX}/shell/init.sh
 
 ${MODULE_PATH}: module_template
 	mkdir -p $$(dirname ${MODULE_PATH})

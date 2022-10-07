@@ -43,11 +43,3 @@ all clean uninstall:
 	$(MAKE) -C pipx_app APP=mypy $@
 	$(MAKE) -C pipx_app APP=black $@
 	$(MAKE) -C pipx_app APP=pyright $@
-
-
-#brew "fzf"
-
-#brew "python"
-
-# make modules for
-# buildg
