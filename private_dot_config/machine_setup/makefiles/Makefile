@@ -6,6 +6,8 @@ export PREFIX
 .PHONY: all clean uninstall
 all clean uninstall:
 	set -e
+	$(MAKE) -C libevent $@
+	$(MAKE) -C ncurses $@
 	$(MAKE) -C tmux $@
 	$(MAKE) -C mambaforge $@
 	$(MAKE) -C golang $@
@@ -13,6 +15,7 @@ all clean uninstall:
 	$(MAKE) -C cmake $@
 	$(MAKE) -C git $@
 	$(MAKE) -C neovim $@
+	$(MAKE) -C openssl $@
 	$(MAKE) -C pyenv $@
 	$(MAKE) -C pipx $@
 	$(MAKE) -C zotero $@
@@ -20,6 +23,7 @@ all clean uninstall:
 	$(MAKE) -C lua $@
 	$(MAKE) -C luarocks $@
 	$(MAKE) -C lmod $@
+	$(MAKE) -C libgit2 $@
 	$(MAKE) -C exa $@
 	# rust apps
 	$(MAKE) -C rust_app APP=bat $@

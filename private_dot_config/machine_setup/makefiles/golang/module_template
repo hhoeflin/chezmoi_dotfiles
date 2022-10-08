@@ -2,6 +2,6 @@ help([[
 golang module by Holger Hoefling
 ]])
 
-conlict("Golang")
+conflict("Golang")
 
 prepend_path( "PATH","${APP_PREFIX}/bin")

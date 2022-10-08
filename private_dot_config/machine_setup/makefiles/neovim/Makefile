@@ -24,6 +24,7 @@ deps:
 ${APP_PREFIX}/bin/nvim: ${APP_TARFILE} | deps
 	tar zxvf ${APP_TARFILE}
 	cd neovim-${VERSION}
+	export PATH=${PREFIX}/cmake/bin:${PATH}
 	make CMAKE_BUILD_TYPE=Release
 	make CMAKE_INSTALL_PREFIX=${APP_PREFIX} install
 

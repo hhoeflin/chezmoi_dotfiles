@@ -24,6 +24,7 @@ ${APP_PREFIX}/lib/libgit2.so: ${APP_TARFILE} | deps
 	cd libgit2-${VERSION}
 	mkdir build
 	cd build
+	export PATH=${PREFIX}/cmake/bin:${PATH}
 	cmake .. -DCMAKE_INSTALL_PREFIX=${APP_PREFIX}
 	cmake --build . --target install
 
