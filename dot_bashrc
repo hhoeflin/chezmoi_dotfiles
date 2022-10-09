@@ -1,8 +1,13 @@
+if [ -z "$BASHRC_READ" ]; then
+  export BASHRC_READ=1
 
+  source ${HOME}/.local/lmod/lmod/init/profile
+  module use ${HOME}/.config/modules
+  module use ${HOME}/.local/modules
+fi
 
-# Commands that should be applied only for interactive shells.
+# Command that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
-
 HISTFILESIZE=100000
 HISTSIZE=10000
 
@@ -35,6 +40,3 @@ if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
 fi
 
 eval "$(${HOME}/.local/cargo/bin/mcfly init bash)"
-
-source ${HOME}/.local/lmod/lmod/init/profile
-export MODULEPATH=${HOME}/.config/modules:${MODULEPATH:+:${MODULEPATH}}
