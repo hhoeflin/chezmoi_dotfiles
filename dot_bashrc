@@ -1,10 +1,14 @@
 if [ -z "$BASHRC_READ" ]; then
   export BASHRC_READ=1
 
-  source ${HOME}/.local/lmod/lmod/init/profile
+  source ${HOME}/.stow/lmod/lmod/init/profile
   module use ${HOME}/.config/modules
-  module use ${HOME}/.local/modules
+  module use ${HOME}/.stow/modules
 fi
+
+# add .local to path and for libs
+PATH=${HOME}/.local/bin${PATH:+:${PATH}}
+LD_LIBRARYPATH=${HOME}/.local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # Command that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
@@ -19,12 +23,7 @@ shopt -s checkjobs
 
 alias dtask='task -t ~/.config/go-task/Taskfile.yml'
 alias e='$EDITOR `fzf -m --preview="bat --color always {}"`'
-alias lg='lazygit'
-alias ll='exa -lahF'
-alias ls='exa -F'
-alias lt='exa -lahF --tree'
 
-eval "$(${HOME}/.local/cargo/bin/zoxide init bash)"
 
 # ensure CTRL-S doesn't block the terminal
 if [[ -t 0 && $- = *i* ]]
@@ -35,8 +34,20 @@ fi
 export EDITOR="nvim";
 export PYTHONSTARTUP=~/.config/python/pythonrc.py
 
-if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
-  eval "$(${HOME}/.local/cargo/bin/starship init bash --print-full-init)"
+STARSHIP_BINARY=${HOME}/.stow/starship/bin/starship
+if [[ -f ${STARSHIP_BINARY} ]]; then
+  if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
+    eval "$(${HOME}/.stow/starship/bin/starship init bash --print-full-init)"
+  fi
 fi
 
-eval "$(${HOME}/.local/cargo/bin/mcfly init bash)"
+ATUIN_BINARY=${HOME}/.stow/atuin/bin/atuin
+if [[ -f ${ATUIN_BINARY} ]]; then
+  . ${HOME}/.stow/atuin/shell/bash-preexec.sh
+  . ${HOME}/.stow/atuin/shell/atuin_init.sh
+fi
+
+ZOXIDE_BINARY=${HOME}/.stow/zoxide/bin/zoxide
+if [[ -f ${ZOXIDE_BINARY} ]]; then
+  eval "$(${ZOXIDE_BINARY} init bash)"
+fi
