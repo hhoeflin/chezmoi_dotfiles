@@ -4,6 +4,8 @@ if [ -z "$BASHRC_READ" ]; then
   source ${HOME}/.stow/lmod/lmod/init/profile
   module use ${HOME}/.config/modules
   module use ${HOME}/.stow/modules
+  # load all the standard module in sticky fashion
+  module load home/std
 fi
 
 # add .local to path and for libs
@@ -49,5 +51,5 @@ fi
 
 ZOXIDE_BINARY=${HOME}/.stow/zoxide/bin/zoxide
 if [[ -f ${ZOXIDE_BINARY} ]]; then
-  eval "$(${ZOXIDE_BINARY} init bash)"
+  . ${HOME}/.stow/zoxide/shell/zoxide_init.sh
 fi
