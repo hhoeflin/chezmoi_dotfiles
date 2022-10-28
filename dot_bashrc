@@ -6,6 +6,8 @@ if [ -z "$BASHRC_READ" ]; then
   module use ${HOME}/.stow/modules
   # load all the standard module in sticky fashion
   module load home/std
+else
+  source ${HOME}/.stow/lmod/lmod/init/bash
 fi
 
 # add .local to path and for libs
