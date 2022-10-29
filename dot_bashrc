@@ -1,13 +1,9 @@
 if [ -z "$BASHRC_READ" ]; then
   export BASHRC_READ=1
 
-  source ${HOME}/.stow/lmod/lmod/init/profile
-  module use ${HOME}/.config/modules
-  module use ${HOME}/.stow/modules
   # load all the standard module in sticky fashion
+  . ${HOME}/.stow/lmod/lmod/init/bash
   module load home/std
-else
-  source ${HOME}/.stow/lmod/lmod/init/bash
 fi
 
 # add .local to path and for libs

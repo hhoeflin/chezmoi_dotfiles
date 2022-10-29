@@ -39,6 +39,9 @@ require('nvim-tree').setup({
     enable      = true,
     update_cwd  = true,
     ignore_list = {}
+  },
+  renderer= {
+    root_folder_modifier = ":t"
   }
 })
 local map = vim.api.nvim_set_keymap
