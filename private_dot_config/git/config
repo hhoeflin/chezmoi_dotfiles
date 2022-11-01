@@ -8,3 +8,7 @@
 [user]
 	email = "hhoeflin@gmail.com"
 	name = "Holger Hoefling"
+[credential]
+	helper = store
+[push]
+	default = simple
