@@ -15,11 +15,11 @@ end
 -- register any number of sources simultaneously
 local sources = {
     -- flakeheaven,
-    null_ls.builtins.diagnostics.pyproject_flake8,
+    -- null_ls.builtins.diagnostics.pyproject_flake8,
     null_ls.builtins.diagnostics.pydocstyle,
     null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.isort,
+    -- null_ls.builtins.formatting.black,
+    -- null_ls.builtins.formatting.isort,
 }
 
 null_ls.setup({ sources = sources })
