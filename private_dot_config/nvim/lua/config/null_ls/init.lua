@@ -2,7 +2,7 @@ local parents = (...):match "(.-)[^%.]+$"
 local logger = require("null-ls.logger")
 local null_ls = require("null-ls")
 
-ok, flakeheaven = require(parents .. "null_ls.flakeheaven")
+--[[ ok, flakeheaven = require(parents .. "flakeheaven")
 
 if not ok then
     logger:warn(
@@ -10,11 +10,12 @@ if not ok then
     )
     return
 end
+]]
 
 -- register any number of sources simultaneously
 local sources = {
-    -- null_ls.builtins.diagnostics.flake8,
-    flakeheaven,
+    -- flakeheaven,
+    null_ls.builtins.diagnostics.pyproject_flake8,
     null_ls.builtins.diagnostics.pydocstyle,
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.formatting.black,

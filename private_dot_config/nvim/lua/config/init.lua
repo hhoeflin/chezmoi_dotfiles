@@ -31,7 +31,7 @@ alpha.setup(startify.opts)
 require('config.ale')
 
 -- null-ls
-require('config.null_ls')
+require('config.null_ls.init')
 
 -- nvim-tree
 require('nvim-tree').setup({

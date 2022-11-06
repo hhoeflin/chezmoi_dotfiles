@@ -1,5 +1,7 @@
+-- adapted from the flake8 builtin
 local h = require("null-ls.helpers")
 local methods = require("null-ls.methods")
+local u = require("null-ls.utils")
 
 local DIAGNOSTICS = methods.internal.DIAGNOSTICS
 
@@ -87,6 +89,14 @@ return h.make_builtin({
                 },
             }
         ),
+        cwd = h.cache.by_bufnr(function(params)
+            return u.root_pattern(
+                "pyproject.toml",
+                ".flake8",
+                "setup.cfg",
+                "tox.ini"
+            )(params.bufname)
+        end),
     },
     factory = h.generator_factory,
 })
