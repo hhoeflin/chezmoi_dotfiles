@@ -13,9 +13,6 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
 
   -- THEMES
   use 'catppuccin/catppuccin'
@@ -49,7 +46,8 @@ return require('packer').startup(function(use)
   use 'ray-x/lsp_signature.nvim'
   use 'glepnir/lspsaga.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
-  use 'dense-analysis/ale'
+  use 'sbdchd/neoformat'
+  use 'mfussenegger/nvim-lint'
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 

@@ -42,8 +42,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright', 'rnix', 'hls', 'rust_analyzer'}
-local servers = { 'rnix', 'hls', 'rust_analyzer'}
+local servers = { 'pyright', 'rnix', 'hls', 'rust_analyzer'}
+-- local servers = { 'rnix', 'hls', 'rust_analyzer'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -53,6 +53,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+--[[
 require'lspconfig'.pylsp.setup{
   settings = {
     pylsp = {
@@ -69,6 +70,7 @@ require'lspconfig'.pylsp.setup{
     debounce_text_changes = 150,
   }
 }
+]]
 
 -- lua lsp settings
 require "lspconfig".sumneko_lua.setup {

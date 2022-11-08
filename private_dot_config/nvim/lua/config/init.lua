@@ -27,11 +27,13 @@ local startify = require'alpha.themes.startify'
 startify.nvim_web_devicons.enabled = false
 alpha.setup(startify.opts)
 
--- ale
-require('config.ale')
+-- nvim-lint
+require('config.nvim_lint')
 
--- null-ls
--- require('config.null_ls.init')
+-- neoformat
+require('config.neoformat')
+
+
 
 -- nvim-tree
 require('nvim-tree').setup({
