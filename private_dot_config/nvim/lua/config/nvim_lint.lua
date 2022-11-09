@@ -8,5 +8,5 @@ au BufWritePost lua require('lint').try_lint()
 ]]
 
 vim.cmd [[
-command LintAll :bufdo lua require('lint').try_lint()
+command LintAll :let buf=bufnr('%') | exec 'bufdo lua require("lint").try_lint()' | exec 'b' buf
 ]]
