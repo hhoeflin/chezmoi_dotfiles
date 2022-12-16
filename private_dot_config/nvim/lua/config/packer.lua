@@ -65,7 +65,7 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
 
   use 'ggandor/leap.nvim'
-
+  use 'purescript-contrib/purescript-vim'
   --use {
   --  "folke/noice.nvim",
   --  event = "VimEnter",

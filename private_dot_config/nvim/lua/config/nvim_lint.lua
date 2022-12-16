@@ -1,10 +1,10 @@
 --nvim-lint config
 require('lint').linters_by_ft = {
-  python = {'flake8', 'mypy', 'pydocstyle'}
+  python = {'flake8', 'mypy'}
 }
 
 vim.cmd [[
-au BufWritePost lua require('lint').try_lint()
+autocmd BufWritePost * lua require('lint').try_lint()
 ]]
 
 vim.cmd [[

@@ -53,6 +53,18 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+nvim_lsp.purescriptls.setup {
+  on_attach = on_attach,
+  settings = {
+    purescript = {
+      addSpagoSources = true -- e.g. any purescript language-server config here
+    }
+  },
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
 --[[
 require'lspconfig'.pylsp.setup{
   settings = {

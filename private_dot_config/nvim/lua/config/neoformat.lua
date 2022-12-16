@@ -16,6 +16,7 @@ g.neoformat_enabled_javascript = {'prettier'}
 g.neoformat_enabled_css = {'prettier'}
 g.neoformat_enabled_html = {'prettier'}
 g.neoformat_enabled_haskell = {'ormolu'}
+g.neoformat_enabled_purescript = {'purty'}
 
 g.neoformat_run_all_formatters = 1
 g.neoformat_only_msg_on_error = 1
