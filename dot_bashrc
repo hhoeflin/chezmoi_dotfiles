@@ -1,8 +1,9 @@
+PROG_PREFIX=${HOME}/.stow
 if [ -z "$BASHRC_READ" ]; then
   export BASHRC_READ=1
 
   # load all the standard module in sticky fashion
-  . ${HOME}/.stow/lmod/lmod/init/bash
+  . ${PROG_PREFIX}/lmod/lmod/init/bash
   module load home/std
 fi
 
@@ -34,20 +35,20 @@ fi
 export EDITOR="nvim";
 export PYTHONSTARTUP=~/.config/python/pythonrc.py
 
-STARSHIP_BINARY=${HOME}/.stow/starship/bin/starship
+STARSHIP_BINARY=${PROG_PREFIX}/starship/bin/starship
 if [[ -f ${STARSHIP_BINARY} ]]; then
   if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
-    eval "$(${HOME}/.stow/starship/bin/starship init bash --print-full-init)"
+    eval "$(${PROG_PREFIX}/starship/bin/starship init bash --print-full-init)"
   fi
 fi
 
-ATUIN_BINARY=${HOME}/.stow/atuin/bin/atuin
+ATUIN_BINARY=${PROG_PREFIX}/atuin/bin/atuin
 if [[ -f ${ATUIN_BINARY} ]]; then
-  . ${HOME}/.stow/atuin/shell/bash-preexec.sh
-  . ${HOME}/.stow/atuin/shell/atuin_init.sh
+  . ${PROG_PREFIX}/atuin/shell/bash-preexec.sh
+  . ${PROG_PREFIX}/atuin/shell/atuin_init.sh
 fi
 
-ZOXIDE_BINARY=${HOME}/.stow/zoxide/bin/zoxide
+ZOXIDE_BINARY=${PROG_PREFIX}/zoxide/bin/zoxide
 if [[ -f ${ZOXIDE_BINARY} ]]; then
-  . ${HOME}/.stow/zoxide/shell/zoxide_init.sh
+  . ${PROG_PREFIX}/zoxide/shell/zoxide_init.sh
 fi
