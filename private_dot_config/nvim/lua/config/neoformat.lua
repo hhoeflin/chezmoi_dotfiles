@@ -1,7 +1,7 @@
 local g = vim.g
 
 -- Enable alignment
-g.neoformat_basic_format_align = 1
+--g.neoformat_basic_format_align = 1
 
 -- Enable tab to spaces conversion
 g.neoformat_basic_format_retab = 1
@@ -24,6 +24,6 @@ g.neoformat_only_msg_on_error = 1
 vim.cmd [[
 :augroup fmt
 :  autocmd!
-:  autocmd BufWritePre * undojoin | Neoformat
+:  au BufWritePre * try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
 :augroup END
 ]]
