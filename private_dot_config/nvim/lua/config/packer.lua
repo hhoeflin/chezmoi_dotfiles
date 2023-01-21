@@ -44,7 +44,13 @@ return require('packer').startup({function(use)
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
-  use 'glepnir/lspsaga.nvim'
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        require('lspsaga').setup({})
+    end,
+  })
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'sbdchd/neoformat'
   use 'mfussenegger/nvim-lint'
@@ -66,22 +72,7 @@ return require('packer').startup({function(use)
 
   use 'ggandor/leap.nvim'
   use 'purescript-contrib/purescript-vim'
-  --use {
-  --  "folke/noice.nvim",
-  --  event = "VimEnter",
-  --  config = function()
-  --    require("noice").setup()
-  --  end,
-  --  requires = {
-  --    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --    "MunifTanjim/nui.nvim",
-  --    -- OPTIONAL:
-  --    --   `nvim-notify` is only needed, if you want to use the notification view.
-  --    --   If not available, we use `mini` as the fallback
-  --    "rcarriga/nvim-notify",
-  --    }
-  --}
-
+  use "dstein64/vim-startuptime"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
