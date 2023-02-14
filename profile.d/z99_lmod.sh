@@ -1,3 +1,4 @@
-MODULEPATH=${MODULEPATH:+${MODULEPATH}:}${HOME}/.stow/modules
+PROG_PREFIX=${HOME}/.local/progs
+MODULEPATH=${MODULEPATH:+${MODULEPATH}:}${PROG_PREFIX}/modules
 MODULEPATH=${MODULEPATH:+${MODULEPATH}:}${HOME}/.config/modules
-. ${HOME}/.stow/lmod/lmod/init/profile
+. ${PROG_PREFIX}/lmod/lmod/init/profile

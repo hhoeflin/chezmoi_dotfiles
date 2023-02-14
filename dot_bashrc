@@ -1,4 +1,7 @@
-PROG_PREFIX=${HOME}/.stow
+function latest_version () {
+  ls -d $1/*/ | tail -n 1
+}
+PROG_PREFIX=${HOME}/.local/progs
 
 # function to detect the latest version if there are several in a dir
 latest_version_dir() {
@@ -41,7 +44,7 @@ fi
 export EDITOR="nvim";
 export PYTHONSTARTUP=~/.config/python/pythonrc.py
 
-STARSHIP_PREFIX=${PROG_PREFIX}/starship
+STARSHIP_PREFIX=$(latest_version ${PROG_PREFIX}/starship)
 STARSHIP_BINARY=${STARSHIP_PREFIX}/bin/starship
 if [[ -f ${STARSHIP_BINARY} ]]; then
   if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
@@ -49,15 +52,15 @@ if [[ -f ${STARSHIP_BINARY} ]]; then
   fi
 fi
 
-ATUIN_PREFIX=${PROG_PREFIX}/atuin
-ATUIN_BINARY=${PROG_PREFIX}/atuin/bin/atuin
+ATUIN_PREFIX=$(latest_version ${PROG_PREFIX}/atuin)
+ATUIN_BINARY=${ATUIN_PREFIX}/bin/atuin
 if [[ -f ${ATUIN_BINARY} ]]; then
   . ${ATUIN_PREFIX}/shell/bash-preexec.sh
   . ${ATUIN_PREFIX}/shell/atuin_init.sh
 fi
 
-ZOXIDE_PREFIX=${PROG_PREFIX}/zoxide
-ZOXIDE_BINARY=${PROG_PREFIX}/zoxide/bin/zoxide
+ZOXIDE_PREFIX=$(latest_version ${PROG_PREFIX}/zoxide)
+ZOXIDE_BINARY=${ZOXIDE_PREFIX}/bin/zoxide
 if [[ -f ${ZOXIDE_BINARY} ]]; then
   . ${ZOXIDE_PREFIX}/shell/zoxide_init.sh
 fi
