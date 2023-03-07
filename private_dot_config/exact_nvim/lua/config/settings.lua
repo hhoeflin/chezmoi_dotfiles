@@ -5,6 +5,9 @@ local set = vim.opt
 g.mapleader = "\\"
 g.maplocalleader = "-"
 
+-- keep gitgutter open
+set.signcolumn = "yes"
+
 -- line numbers
 set.nu = true
 

@@ -27,11 +27,13 @@ local startify = require'alpha.themes.startify'
 startify.nvim_web_devicons.enabled = false
 alpha.setup(startify.opts)
 
--- ale
-require('config.ale')
+-- nvim-lint
+require('config.nvim_lint')
 
--- null-ls
-require('config.null_ls')
+-- neoformat
+require('config.neoformat')
+
+
 
 -- nvim-tree
 require('nvim-tree').setup({
@@ -39,6 +41,9 @@ require('nvim-tree').setup({
     enable      = true,
     update_cwd  = true,
     ignore_list = {}
+  },
+  renderer= {
+    root_folder_modifier = ":t"
   }
 })
 local map = vim.api.nvim_set_keymap

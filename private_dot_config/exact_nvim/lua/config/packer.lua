@@ -11,11 +11,8 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
+return require('packer').startup({function(use)
   use 'wbthomason/packer.nvim'
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
 
   -- THEMES
   use 'catppuccin/catppuccin'
@@ -47,9 +44,16 @@ return require('packer').startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
-  use 'glepnir/lspsaga.nvim'
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        require('lspsaga').setup({})
+    end,
+  })
   use 'jose-elias-alvarez/null-ls.nvim'
-  use 'dense-analysis/ale'
+  use 'sbdchd/neoformat'
+  use 'mfussenegger/nvim-lint'
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -66,10 +70,17 @@ return require('packer').startup(function(use)
   }
   use 'lukas-reineke/indent-blankline.nvim'
 
+  use 'ggandor/leap.nvim'
+  use 'purescript-contrib/purescript-vim'
+  use "dstein64/vim-startuptime"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
-end)
+end, 
+config={
+  snapshot_path=vim.fn.stdpath('config') .. '/packer_snapshots'
+  }
+})
