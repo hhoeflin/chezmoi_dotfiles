@@ -58,6 +58,8 @@ return require('packer').startup({function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Various
+  use {'urbainvaes/vim-ripple'}
+
   use 'goolord/alpha-nvim'
   use {
     'nvim-lualine/lualine.nvim',
