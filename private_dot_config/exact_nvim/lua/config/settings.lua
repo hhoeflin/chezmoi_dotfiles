@@ -20,6 +20,9 @@ set.expandtab = true
 -- switch without saving buffer
 set.hidden = true
 
+-- in terminal mode, set esc to exit
+vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n>', {silent=true, noremap=true})
+
 -- switch between windows using the window number
 for i = 1, 9
 do
