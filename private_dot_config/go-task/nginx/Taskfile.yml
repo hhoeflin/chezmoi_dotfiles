@@ -4,9 +4,11 @@ tasks:
   start:
     desc: Start the nginx service on port 8188 that will map ports from the 'tools/<port>/' directory to the corresponding localhost port.
     cmds:
-      - nginx -c $(pwd)/nginx.conf -e /tmp/error.log
+      - mkdir -p ${HOME}/.local/share/nginx
+      - envsubst '$HOME' < nginx.conf.template > nginx.conf
+      - nginx -c {{ .TASKFILE_DIR}}/nginx.conf -e /tmp/error.log
 
   stop:
     desc: Stop the nginx service on port 8188
     cmds:
-      - nginx -c $(pwd)/nginx.conf -e /tmp/error.log -s stop
+      - nginx -c {{ .TASKFILE_DIR}}/nginx.conf -e /tmp/error.log -s stop
