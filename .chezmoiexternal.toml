@@ -1,0 +1,12 @@
+[".config/tmux/plugins/tpm"]
+    type="archive"
+    url="https://github.com/tmux-plugins/tpm/archive/refs/tags/v3.1.0.tar.gz"
+    exact=true
+    stripComponents=1
+
+[".config/joshuto"]
+    type="archive"
+    url="https://github.com/kamiyaa/joshuto/archive/refs/heads/main.tar.gz"
+    exact=true
+    stripComponents=2
+    include=["*/config/*"]
