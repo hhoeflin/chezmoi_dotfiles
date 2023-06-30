@@ -1,4 +1,4 @@
 PROG_PREFIX=${HOME}/.local/progs
-MODULEPATH=${MODULEPATH:+${MODULEPATH}:}${PROG_PREFIX}/modules
-MODULEPATH=${MODULEPATH:+${MODULEPATH}:}${HOME}/.config/modules
 . ${PROG_PREFIX}/lmod/lmod/init/profile
+module use ${PROG_PREFIX}/modules
+module use ${HOME}/.config/modules
