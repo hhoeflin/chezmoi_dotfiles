@@ -8,9 +8,13 @@ latest_version_dir() {
   echo $(ls -d $1/*/ | tail -n 1)
 }
 
-if [ -z "$BASHRC_READ" ]; then
-  export BASHRC_READ=1
-
+# needed if module command not available
+if ! command -v module &> /dev/null
+then
+  export MODULE_BASHRC_INIT=''
+fi
+if [ -z "$MODULE_BASHRC_INIT" ]; then
+  export MODULE_BASHRC_INIT=1
   # load all the standard module in sticky fashion
   . ${PROG_PREFIX}/lmod/lmod/init/bash
   module load home/std
