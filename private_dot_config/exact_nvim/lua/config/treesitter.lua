@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = {"python", "markdown", "r", "make", "haskell"},
+  ensure_installed = {"python", "markdown", "r", "make"},
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -23,5 +23,3 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
-ft_to_parser.purescript = "haskell" -- the someft filetype will use the python parser and queries.

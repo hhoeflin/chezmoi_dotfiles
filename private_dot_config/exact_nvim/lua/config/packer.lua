@@ -51,7 +51,6 @@ return require('packer').startup({function(use)
         require('lspsaga').setup({})
     end,
   })
-  use 'jose-elias-alvarez/null-ls.nvim'
   use 'sbdchd/neoformat'
   use 'mfussenegger/nvim-lint'
 
