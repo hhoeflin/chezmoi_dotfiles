@@ -1,6 +1,9 @@
 local g = vim.g
 local set = vim.opt
 
+-- disable mouse
+set.mouse = ''
+
 -- setting the leader keys
 g.mapleader = "\\"
 g.maplocalleader = "-"
