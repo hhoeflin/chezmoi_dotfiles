@@ -33,7 +33,8 @@ require('config.nvim_lint')
 -- neoformat
 require('config.neoformat')
 
-
+-- ale
+-- require('config.ale')
 
 -- nvim-tree
 require('nvim-tree').setup({
@@ -72,3 +73,6 @@ require('neogen').setup {
 
 -- lspsaga
 require('config.lspsaga')
+
+-- vim-slime
+require('config.slime')

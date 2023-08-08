@@ -4,7 +4,7 @@
 local g = vim.g
 g.ale_html_htmlhint_executable = 'npx htmlhint'
 g.ale_linters = {
-  python={},
+  python={'flake8', 'mypy'},
   javascript={'xo'},
   html={'htmlhint'},
   rust={'cargo'},
@@ -27,3 +27,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<Plug>(ale_previous_wrap)', {silent=true}
 vim.api.nvim_set_keymap('n', '<C-j>', '<Plug>(ale_next_wrap)', {silent=true})
 -- Keep sign gutter open even if no errors
 g.ale_sign_column_always = 1
+-- set error message format
+g.ale_echo_msg_format='[%linter% %severity% %code%]: %s'
+g.ale_disable_lsp = 1
+g.ale_use_neovim_diagnostics_api = 1

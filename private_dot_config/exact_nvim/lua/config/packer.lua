@@ -53,11 +53,13 @@ return require('packer').startup({function(use)
   })
   use 'sbdchd/neoformat'
   use 'mfussenegger/nvim-lint'
+  -- use 'dense-analysis/ale'
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', tag='v0.9.0', run = ':TSUpdate' }
 
   -- Various
   use {'urbainvaes/vim-ripple'}
+  use 'jpalardy/vim-slime'
 
   use 'goolord/alpha-nvim'
   use {
@@ -80,7 +82,7 @@ return require('packer').startup({function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
-end, 
+end,
 config={
   snapshot_path=vim.fn.stdpath('config') .. '/packer_snapshots'
   }
