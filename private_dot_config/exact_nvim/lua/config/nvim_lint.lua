@@ -4,7 +4,7 @@ require('lint').linters_by_ft = {
 }
 
 vim.cmd [[
-autocmd BufWritePost * lua require('lint').try_lint()
+autocmd BufWritePost * exec ':silent! lua require("lint").try_lint()'
 ]]
 
 vim.cmd [[
@@ -15,8 +15,10 @@ vim.diagnostic.config({
 virtual_text = {
     source = "always",
     format = function(diagnostic)
-    if diagnostic.user_data.lsp.code ~= nil then
-        return string.format("%s: %s", diagnostic.user_data.lsp.code, diagnostic.message)
+    if diagnostic.user_data ~= nil then
+        if diagnostic.user_data.lsp.code ~= nil then
+            return string.format("%s: %s", diagnostic.user_data.lsp.code, diagnostic.message)
+        end
     end
     return diagnostic.message
 end,
