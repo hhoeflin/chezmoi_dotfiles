@@ -21,6 +21,10 @@ print(__file__)
 if "IPython" in sys.modules:
     # yes it is
     try:
+        get_ipython().run_line_magic("load_ext", "autoreload")
+    except Exception as e:
+        print(e)
+    try:
         get_ipython().run_line_magic("load_ext", "mkreports")
     except Exception as e:
         print(e)

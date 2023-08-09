@@ -42,6 +42,8 @@ def fzf_i_search(event):
             fzf_options="--no-sort --border --height=80% --margin=1 --padding=1"
             " --preview 'echo {} | sed \"s/ @@ /\\n/g\" | bat --color=always --style=numbers -l py -'",
         )
+        # multiple returns get concatenated with an emtpy line in-between
+        text = "\n\n".join(text)
         # reverse the replacement of newlines
         text = text.replace(" @@ ", "\n")
     except:
@@ -49,7 +51,7 @@ def fzf_i_search(event):
     buf = event.current_buffer
     if not is_in_empty_line(buf):
         buf.insert_line_below()
-    buf.insert_text("\n".join(text))
+    buf.insert_text(text)
 
 
 def register():
