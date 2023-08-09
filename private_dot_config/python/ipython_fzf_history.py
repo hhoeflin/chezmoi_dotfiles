@@ -39,7 +39,7 @@ def fzf_i_search(event):
     try:
         text = fzf.prompt(
             history_strings,
-            fzf_options="--no-sort --border --height=80% --margin=1 --padding=1"
+            fzf_options="--no-sort --multi --border --height=80% --margin=1 --padding=1"
             " --preview 'echo {} | sed \"s/ @@ /\\n/g\" | bat --color=always --style=numbers -l py -'",
         )
         # multiple returns get concatenated with an emtpy line in-between
