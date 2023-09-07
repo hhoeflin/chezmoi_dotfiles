@@ -1,2 +1,9 @@
 [shlvl]
 disabled = false
+
+[hostname]
+ssh_only = false
+disabled = false
+
+[conda]
+truncation_length = 2
