@@ -35,9 +35,5 @@ end
 -- end highlight on esc
 vim.api.nvim_set_keymap('n', '<ESC>', ':noh<return><esc>', {silent=true, noremap=true})
 
--- theme
-set.termguicolors = true
-vim.cmd("colorscheme nightfly")
-
 -- copying to clipboard
 vim.api.nvim_set_option("clipboard","unnamed")
