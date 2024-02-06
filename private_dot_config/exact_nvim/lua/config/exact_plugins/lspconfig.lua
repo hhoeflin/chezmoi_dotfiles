@@ -85,52 +85,9 @@ M.config = function()
         }
     } 
 
-    --[[
-    require'lspconfig'.pylsp.setup{
-      settings = {
-        pylsp = {
-          plugins = {
-            pycodestyle = {
-              ignore = {'W391'},
-              maxLineLength = 100
-            }
-          }
-        }
-      },
-      on_attach = on_attach,
-      flags = {
-        debounce_text_changes = 150,
-      }
-    }
-    ]]
-
     -- lua lsp settings
     require "lspconfig".lua_ls.setup {
-        cmd = {"lua-lsp"},
-        root_dir = function()
-            return vim.loop.cwd()
-        end,
         on_attach = on_attach,
-        settings = {
-            Lua = {
-                runtime = {
-                    version = "LuaJIT",
-                    path = vim.split(package.path, ";")
-                },
-                diagnostics = {
-                    globals = {"vim"}
-                },
-                workspace = {
-                    library = {
-                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                    }
-                },
-                telemetry = {
-                    enable = false
-                }
-            }
-        }
     }
 end
 
