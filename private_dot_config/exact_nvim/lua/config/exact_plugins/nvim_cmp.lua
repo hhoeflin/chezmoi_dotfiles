@@ -53,14 +53,14 @@ M.config = function()
 		mapping = cmp.mapping.preset.insert({
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() and has_words_before() then
-					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
 				else
 					fallback()
 				end
 			end, { "i", "s" }),
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
-					cmp.select_prev_item()
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
 				else
 					fallback()
 				end
