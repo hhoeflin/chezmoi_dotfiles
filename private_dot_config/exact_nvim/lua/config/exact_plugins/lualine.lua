@@ -4,7 +4,6 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		sections = {
-            lualine_a = {"winnr","mode"},
 			lualine_c = {
 				{
 					"filename",
@@ -29,6 +28,5 @@ return {
 				"filetype",
 			},
 		},
-        inactive_sections={lualine_a = {"winnr"}},
 	},
 }

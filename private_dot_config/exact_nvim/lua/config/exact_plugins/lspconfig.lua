@@ -1,6 +1,9 @@
 local M = {
 	"neovim/nvim-lspconfig",
 	lazy = true,
+	dependencies = {
+		"ray-x/lsp_signature.nvim",
+	},
 }
 
 M.config = function()
