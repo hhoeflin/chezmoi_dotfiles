@@ -13,7 +13,11 @@ return {
 		-- Enable trimmming of trailing whitespace
 		g.neoformat_basic_format_trim = 1
 
-		g.neoformat_enabled_python = { "black", "isort", "docformatter" }
+		if vim.env.NVIM_FORMAT_PYTHON then
+			g.neoformat_enabled_python = vim.split(vim.env.NVIM_FORMAT_PYTHON, ",")
+		else
+			g.neoformat_enabled_python = { "ruff" }
+		end
 		g.neoformat_enabled_r = { "styler" }
 		g.neoformat_enabled_rust = { "rustfmt" }
 		g.neoformat_enabled_javascript = { "prettier" }
