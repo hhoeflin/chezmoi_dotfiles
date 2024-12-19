@@ -13,4 +13,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load the configuration
+require("settings")
 require("config")()
