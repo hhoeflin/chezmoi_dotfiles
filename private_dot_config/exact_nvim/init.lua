@@ -14,4 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load the configuration
 require("settings")
-require("config")()
+
+if vim.loop.fs_stat(".nvim.lua") then
+	vim.opt.exrc = true -- allow local .nvim.lua .vimrc .exrc files
+else
+	require("config")()
+end
