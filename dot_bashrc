@@ -1,5 +1,5 @@
 function latest_version () {
-  ls -d $1/*/ | tail -n 1
+  /usr/bin/ls -d $1/*/ | tail -n 1
 }
 PROG_PREFIX=${HOME}/.local/progs
 
