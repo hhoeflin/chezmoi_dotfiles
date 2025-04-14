@@ -6,7 +6,7 @@ return {
 		if vim.env.NVIM_LINT_PYTHON then
 			linter_ft_table["python"] = vim.split(vim.env.NVIM_LINT_PYTHON, ",")
 		else
-			linter_ft_table["python"] = { "ruff" }
+			linter_ft_table["python"] = { "ruff", "mypy" }
 		end
 		require("lint").linters_by_ft = linter_ft_table
 
