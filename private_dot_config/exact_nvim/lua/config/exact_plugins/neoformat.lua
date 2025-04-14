@@ -4,6 +4,9 @@ return {
 	init = function()
 		local g = vim.g
 
+		-- ruff isort formatter
+		g.neoformat_python_ruffisort = { exe = "ruff", args = { "check", "--select I", "--fix", "-q", "-"}, stdin = 1 }
+
 		-- Enable alignment
 		--g.neoformat_basic_format_align = 1
 
@@ -16,7 +19,7 @@ return {
 		if vim.env.NVIM_FORMAT_PYTHON then
 			g.neoformat_enabled_python = vim.split(vim.env.NVIM_FORMAT_PYTHON, ",")
 		else
-			g.neoformat_enabled_python = { "ruff" }
+			g.neoformat_enabled_python = { "ruff", "ruffisort" }
 		end
 		g.neoformat_enabled_r = { "styler" }
 		g.neoformat_enabled_rust = { "rustfmt" }
