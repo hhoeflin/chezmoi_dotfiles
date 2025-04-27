@@ -1,3 +1,9 @@
+# ensure bashrc is not run in a singularity container
+if [[ -v "SINGULARITY_CONTAINER" ]]; then
+    echo 'Not running bashrc as inside singularity container'
+    return
+fi
+
 # set name of shell being used
 SHELLNAME=$(basename ${SHELL})
 # set vars for homebrew itself
