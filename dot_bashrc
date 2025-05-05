@@ -1,9 +1,3 @@
-# ensure bashrc is not run in a singularity container
-if [[ -v "SINGULARITY_CONTAINER" ]]; then
-    echo 'Not running bashrc as inside singularity container'
-    return
-fi
-
 # set name of shell being used
 SHELLNAME=$(basename ${SHELL})
 # set vars for homebrew itself
@@ -31,10 +25,10 @@ else
 fi
 # add some module paths if they are present
 if [[ -d "${HOME}/modules" ]]; then
-    MODULEPATH="${HOME}/modules${MODULEPATH:+":$MODULEPATH"}"
+    module use "${HOME}/modules"
 fi
 if [[ -d "/opt/modules" ]]; then
-    MODULEPATH="/opt/modules${MODULEPATH:+":$MODULEPATH"}"
+    module use "/opt/modules"
 fi
 
 
@@ -45,14 +39,23 @@ fi
 [[ $- == *i* ]] || return
 
 # some settings for history
-HISTFILESIZE=100000
-HISTSIZE=10000
+if [[ $SHELLNAME == "bash" ]]; then 
+    HISTFILESIZE=100000
+    HISTSIZE=10000
 
-shopt -s histappend
-shopt -s checkwinsize
-shopt -s extglob
-shopt -s globstar
-shopt -s checkjobs
+    shopt -s histappend
+    shopt -s checkwinsize
+    shopt -s extglob
+    shopt -s globstar
+    shopt -s checkjobs
+else
+    # Append to history and share history across sessions
+    setopt APPEND_HISTORY SHARE_HISTORY
+    # Enable extended globbing
+    setopt EXTENDED_GLOB
+    # Warn on background jobs during shell exit
+    setopt CHECK_JOBS
+fi
 
 # ensure CTRL-S doesn't block the terminal
 if [[ -t 0 && $- = *i* ]]
@@ -87,8 +90,8 @@ eval "$(micromamba shell hook -s ${SHELLNAME})"
 # source an env file
 function dotenv { 
     set -a; . ${1:-.env} || true; set +a; 
-}; 
-export -f dotenv
+};
+export -f dotenv > /dev/null
 
 ###############################
 # Aliases
@@ -108,3 +111,6 @@ alias dtask='task -t ~/.config/go-task/Taskfile.yml'
 # open editor with fzf search enabled
 alias e='$EDITOR `fzf -m --preview="bat --color always {}"`'
 
+# use chezmoi in edit and apply mode
+alias cea='chezmoi edit --apply'
+alias clg='lg --work-tree=${HOME}/.local/share/chezmoi'
