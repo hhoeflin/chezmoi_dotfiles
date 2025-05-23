@@ -1,4 +1,15 @@
+require("lspconfig")
 vim.lsp.enable("basedpyright")
+vim.lsp.config('lus_ls', 
+    {
+        settings = {
+            Lua = {
+            diagnostics = {
+                globals = {'vim'}
+            }
+        }
+    }
+  })
 vim.lsp.enable("lua_ls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
