@@ -1,0 +1,70 @@
+function latest_version () {
+  /usr/bin/ls -d $1/*/ | tail -n 1
+}
+PROG_PREFIX=${HOME}/.local/progs
+
+# function to detect the latest version if there are several in a dir
+latest_version_dir() {
+  echo $(ls -d $1/*/ | tail -n 1)
+}
+
+# needed if module command not available
+if ! command -v module &> /dev/null
+then
+  export MODULE_BASHRC_INIT=''
+fi
+if [ -z "$MODULE_BASHRC_INIT" ]; then
+  export MODULE_BASHRC_INIT=1
+  # load all the standard module in sticky fashion
+  . ${PROG_PREFIX}/lmod/lmod/init/bash
+  module load home/std
+fi
+
+# add .local to path and for libs
+PATH=${HOME}/.local/bin${PATH:+:${PATH}}
+LD_LIBRARYPATH=${HOME}/.local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# Command that should be applied only for interactive shells.
+[[ $- == *i* ]] || return
+HISTFILESIZE=100000
+HISTSIZE=10000
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s globstar
+shopt -s checkjobs
+
+alias dtask='task -t ~/.config/go-task/Taskfile.yml'
+alias e='$EDITOR `fzf -m --preview="bat --color always {}"`'
+
+
+# ensure CTRL-S doesn't block the terminal
+if [[ -t 0 && $- = *i* ]]
+then
+  stty -ixon
+fi
+
+export EDITOR="nvim";
+export PYTHONSTARTUP=~/.config/python/pythonrc.py
+
+STARSHIP_PREFIX=$(latest_version ${PROG_PREFIX}/starship)
+STARSHIP_BINARY=${STARSHIP_PREFIX}/bin/starship
+if [[ -f ${STARSHIP_BINARY} ]]; then
+  if [[ $TERM != "dumb" && (-z $INSIDE_EMACS || $INSIDE_EMACS == "vterm") ]]; then
+    eval "$(${STARSHIP_PREFIX}/bin/starship init bash --print-full-init)"
+  fi
+fi
+
+ATUIN_PREFIX=$(latest_version ${PROG_PREFIX}/atuin)
+ATUIN_BINARY=${ATUIN_PREFIX}/bin/atuin
+if [[ -f ${ATUIN_BINARY} ]]; then
+  . ${ATUIN_PREFIX}/shell/bash-preexec.sh
+  . ${ATUIN_PREFIX}/shell/atuin_init.sh
+fi
+
+ZOXIDE_PREFIX=$(latest_version ${PROG_PREFIX}/zoxide)
+ZOXIDE_BINARY=${ZOXIDE_PREFIX}/bin/zoxide
+if [[ -f ${ZOXIDE_BINARY} ]]; then
+  . ${ZOXIDE_PREFIX}/shell/zoxide_init.sh
+fi
