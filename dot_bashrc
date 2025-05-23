@@ -23,11 +23,13 @@ eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 
 # source lmod if is installed
 # same for bash end zsh
-LMOD_INIT_SCRIPT=${HOMEBREW_PREFIX}/opt/lmod/init/profile
-if [[ -f ${LMOD_INIT_SCRIPT} ]]; then
-    source ${LMOD_INIT_SCRIPT}
-else
-    echo "${LMOD_INIT_SCRIPT} not found."
+if [[ -v HOMEBREW_PREFIX ]]; then
+    LMOD_INIT_SCRIPT=${HOMEBREW_PREFIX}/opt/lmod/init/profile
+    if [[ -f ${LMOD_INIT_SCRIPT} ]]; then
+        source ${LMOD_INIT_SCRIPT}
+    else
+        echo "${LMOD_INIT_SCRIPT} not found."
+    fi
 fi
 # add some module paths if they are present
 if [[ -d "${HOME}/modules" ]]; then
