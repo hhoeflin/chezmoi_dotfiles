@@ -121,6 +121,9 @@ fi
 # lazygit
 alias lg='lazygit'
 
+# chezmoi
+alias cm='chezmoi'
+
 # lsd
 alias ls='lsd -F'
 alias ll='lsd -lahF'
