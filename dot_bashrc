@@ -19,11 +19,12 @@ if ! [[ -v HOMEBREW_PREFIX ]]; then
         exit 1
     fi
 fi
-eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 
-# source lmod if is installed
-# same for bash end zsh
 if [[ -v HOMEBREW_PREFIX ]]; then
+    # load homebrew if now the HOMEBREW_PREFIX is available
+    eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+    # source lmod if is installed
+    # same for bash and zsh
     LMOD_INIT_SCRIPT=${HOMEBREW_PREFIX}/opt/lmod/init/profile
     if [[ -f ${LMOD_INIT_SCRIPT} ]]; then
         source ${LMOD_INIT_SCRIPT}
