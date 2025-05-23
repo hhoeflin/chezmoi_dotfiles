@@ -1,13 +1,6 @@
-local treesitter_version = ""
-if vim.fn.has("nvim-0.9.2") == 1 then
-	treesitter_version = "v0.9.2"
-else
-	treesitter_version = "v0.9.1"
-end
-
 return {
 	"nvim-treesitter/nvim-treesitter",
-	tag = treesitter_version,
+	-- tag = "v0.9.3",
 	build = function()
 		require("nvim-treesitter.install").update({ with_sync = true })()
 	end,
