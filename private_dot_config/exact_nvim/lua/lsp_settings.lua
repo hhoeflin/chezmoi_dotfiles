@@ -1,15 +1,14 @@
 require("lspconfig")
 vim.lsp.enable("basedpyright")
-vim.lsp.config('lus_ls', 
-    {
-        settings = {
-            Lua = {
-            diagnostics = {
-                globals = {'vim'}
-            }
-        }
-    }
-  })
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
 vim.lsp.enable("lua_ls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -51,7 +50,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			bind = true, -- This is mandatory, otherwise border config won't get registered.
 			handler_opts = {
 				border = "rounded",
-            }
+			},
 		}, bufnr)
 
 		-- now client specific settings
