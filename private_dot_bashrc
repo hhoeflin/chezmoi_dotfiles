@@ -16,21 +16,26 @@ if ! [[ -v HOMEBREW_PREFIX ]]; then
         HOMEBREW_PREFIX="${HOME}/.homebrew"
     else
         echo "HOMEBREW_PREFIX not set and can't auto-detect"
-        exit 1
+        if [[ -f ${HOME}/.bashrc_prog ]]; then
+            echo "Loading bashrc_prog"
+            source ${HOME}/.bashrc_prog
+            return
+        else
+            echo "Alternative .bashrc_prog not found"
+            return
+        fi
     fi
 fi
 
-if [[ -v HOMEBREW_PREFIX ]]; then
-    # load homebrew if now the HOMEBREW_PREFIX is available
-    eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
-    # source lmod if is installed
-    # same for bash and zsh
-    LMOD_INIT_SCRIPT=${HOMEBREW_PREFIX}/opt/lmod/init/profile
-    if [[ -f ${LMOD_INIT_SCRIPT} ]]; then
-        source ${LMOD_INIT_SCRIPT}
-    else
-        echo "${LMOD_INIT_SCRIPT} not found."
-    fi
+# load homebrew if now the HOMEBREW_PREFIX is available
+eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+# source lmod if is installed
+# same for bash and zsh
+LMOD_INIT_SCRIPT=${HOMEBREW_PREFIX}/opt/lmod/init/profile
+if [[ -f ${LMOD_INIT_SCRIPT} ]]; then
+    source ${LMOD_INIT_SCRIPT}
+else
+    echo "${LMOD_INIT_SCRIPT} not found."
 fi
 # add some module paths if they are present
 if [[ -d "${HOME}/modules" ]]; then
@@ -39,6 +44,7 @@ fi
 if [[ -d "/opt/modules" ]]; then
     MODULEPATH="/opt/modules${MODULEPATH:+":$MODULEPATH"}"
 fi
+
 
 
 ##############################################################
