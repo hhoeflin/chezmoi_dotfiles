@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			bind = true, -- This is mandatory, otherwise border config won't get registered.
 			handler_opts = {
 				border = "rounded",
-
+            }
 		}, bufnr)
 
 		-- now client specific settings
