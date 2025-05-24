@@ -34,12 +34,6 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = { preset = "super-tab" },
 
-			appearance = {
-				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-				-- Adjusts spacing to ensure icons are aligned
-				nerd_font_variant = "mono",
-			},
-
 			-- (Default) Only show the documentation popup when manually triggered
 			completion = { documentation = { auto_show = false } },
 
@@ -66,6 +60,7 @@ return {
 				},
 			},
 			appearance = {
+				nerd_font_variant = "mono",
 				-- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
 				kind_icons = {
 					Copilot = "",
@@ -108,6 +103,12 @@ return {
 			--
 			-- See the fuzzy documentation for more information
 			fuzzy = { implementation = "prefer_rust_with_warning" },
+			signature = {
+				enabled = true,
+				auto_trigger = true,
+				auto_show = false,
+				window = { show_documentation = true },
+			},
 		},
 		opts_extend = { "sources.default" },
 	},
