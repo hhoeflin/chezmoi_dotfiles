@@ -8,7 +8,8 @@ return {
 		end,
 	},
 	{
-		"CopilotC-Nvim/CopilotChat.nvim",
+		--"CopilotC-Nvim/CopilotChat.nvim",
+		"hhoeflin/CopilotChat.nvim",
 		dependencies = {
 			{ "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
 			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
