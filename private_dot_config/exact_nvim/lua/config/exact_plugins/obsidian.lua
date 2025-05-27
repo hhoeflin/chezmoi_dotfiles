@@ -1,3 +1,9 @@
+if vim.env.OBSIDIAN_VAULT_ROOT then
+	Obsidian_vault_root = vim.env.OBSIDIAN_VAULT_ROOT
+else
+	Obsidian_vault_root = "~/vaults"
+end
+
 return {
 	"obsidian-nvim/obsidian.nvim",
 	version = "*", -- recommended, use latest release instead of latest commit
@@ -27,11 +33,11 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/vaults/personal",
+				path = Obsidian_vault_root .. "/personal",
 			},
 			{
 				name = "work",
-				path = "~/vaults/work",
+				path = Obsidian_vault_root .. "/work",
 				-- Optional, override certain settings.
 				overrides = {
 					notes_subdir = "notes",
@@ -65,10 +71,10 @@ return {
 
 		-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
 		completion = {
-            -- Enables completion using nvim_cmp
-            nvim_cmp = false,
-            -- Enables completion using blink.cmp
-            blink = true,
+			-- Enables completion using nvim_cmp
+			nvim_cmp = false,
+			-- Enables completion using blink.cmp
+			blink = true,
 			-- Trigger completion at 2 chars.
 			min_chars = 2,
 		},
