@@ -63,17 +63,7 @@ fi
 # some settings for history
 export HISTFILESIZE=100000
 export HISTSIZE=10000
-if [[ ${SHELLNAME} == "zsh" ]]; then
-    # Append shell history instead of overwriting it
-    setopt INC_APPEND_HISTORY SHARE_HISTORY
-    # Update terminal size automatically (usually handled by Zsh; add this if needed)
-    autoload -Uz resize
-    TRAPWINCH() { resize 2&>1 > /dev/null }
-    # Enable extended globbing for advanced pattern matching
-    setopt EXTENDED_GLOB
-    # Warn about background jobs when exiting the shell
-    setopt CHECK_JOBS
-else
+if [[ ${SHELLNAME} == "bash" ]]; then
     shopt -s histappend
     shopt -s checkwinsize
     shopt -s extglob
