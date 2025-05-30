@@ -22,6 +22,7 @@ return {
 				-- Set debug logging
 				log_level = "DEBUG",
 			},
+			display = { chat = { window = { layout = "float" } } },
 		},
 		keys = {
 			{ "<leader>tt", "<cmd>CodeCompanionChat Toggle<CR>", desc = "Toggle CodeCompanionChat" },
