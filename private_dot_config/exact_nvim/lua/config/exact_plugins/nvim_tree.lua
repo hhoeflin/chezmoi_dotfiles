@@ -1,7 +1,16 @@
 local function nvim_tree_on_attach(bufnr)
+	local gitpath = require("myutils.gitpath")
 	local api = require("nvim-tree.api")
 	local luv = vim.loop
 
+	local function is_already_added(item_path, chat)
+		for _, ref in ipairs(chat.refs) do
+			if ref.path == item_path then
+				return true
+			end
+		end
+		return false
+	end
 	-- Function to recursively add files in a directory to chat references
 	local function traverse_directory(path, chat)
 		local handle, err = luv.fs_scandir(path)
@@ -17,15 +26,23 @@ local function nvim_tree_on_attach(bufnr)
 
 			local item_path = path .. "/" .. name
 			if type == "file" then
-				-- add the file to references
-				chat.references:add({
-					id = "<file>" .. item_path .. "</file>",
-					path = item_path,
-					source = "codecompanion.strategies.chat.slash_commands.file",
-					opts = {
-						pinned = true,
-					},
-				})
+				-- check if the file is tracked by git
+				if gitpath.is_tracked(item_path) then
+					-- if already added, ignore
+					if not is_already_added(item_path, chat) then
+						-- add the file to references
+						chat.references:add({
+							id = "<file>" .. item_path .. "</file>",
+							path = item_path,
+							source = "codecompanion.strategies.chat.slash_commands.file",
+							opts = {
+								pinned = true,
+							},
+						})
+					end
+				else
+					print("Skipping untracked file: " .. item_path)
+				end
 			elseif type == "directory" then
 				-- recursive call for a subdirectory
 				traverse_directory(item_path, chat)
@@ -71,7 +88,7 @@ end
 
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
 	keys = {
 		{ "<C-p>", ":NvimTreeToggle <CR>", noremap = true },
 	},
