@@ -4,7 +4,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		-- require your component
-		local spinner = require("code_companion_spinner")
+		local spinner = require("myutils.code_companion_spinner")
 
 		require("lualine").setup({
 			sections = {
