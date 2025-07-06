@@ -19,6 +19,8 @@ if ! [[ -v HOMEBREW_PREFIX ]]; then
     # variable unset; we auto-detect
     if [[ -d "/opt/homebrew" ]]; then
         HOMEBREW_PREFIX="/opt/homebrew"
+    elif [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+        HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
     elif [[ -d "${HOME}/.homebrew" ]]; then
         HOMEBREW_PREFIX="${HOME}/.homebrew"
     else
