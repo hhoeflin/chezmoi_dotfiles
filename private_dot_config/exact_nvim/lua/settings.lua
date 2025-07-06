@@ -54,3 +54,6 @@ vim.o.winborder = "rounded"
 -- set how diagnostics show up
 -- https://gpanders.com/blog/whats-new-in-neovim-0-11/#lspa
 vim.diagnostic.config({ virtual_text = true, virtual_lines = { current_line = true } })
+
+-- keymap for showing diagnostics in a floating window
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { noremap = true, silent = true })
