@@ -1,7 +1,7 @@
 # ensure that profile is loaded if in a non-login, interactive shell (e.g. ssh with command)
 # where it can happen that the profile is not being loaded correctly
 if [[ ! -v __PROFILE_LOADED ]]; then
-    echo "Loading profile in bashrc"
+    # echo "Loading profile in bashrc"
     source /etc/profile
     source ${HOME}/.profile
 fi
@@ -32,9 +32,9 @@ if ! [[ -v HOMEBREW_PREFIX ]]; then
     elif [[ -d "${HOME}/.homebrew" ]]; then
         HOMEBREW_PREFIX="${HOME}/.homebrew"
     else
-        echo "HOMEBREW_PREFIX not set and can't auto-detect"
+        # echo "HOMEBREW_PREFIX not set and can't auto-detect"
         if [[ -f ${HOME}/.bashrc_prog ]]; then
-            echo "Loading bashrc_prog"
+            # echo "Loading bashrc_prog"
             source ${HOME}/.bashrc_prog
             return
         else
