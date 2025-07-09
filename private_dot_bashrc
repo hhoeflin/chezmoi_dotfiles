@@ -1,3 +1,11 @@
+# ensure that profile is loaded if in a non-login, interactive shell (e.g. ssh with command)
+# where it can happen that the profile is not being loaded correctly
+if [[ ! -v __PROFILE_LOADED ]]; then
+    echo "Loading profile in bashrc"
+    source /etc/profile
+    source ${HOME}/.profile
+fi
+
 # Source all shell files in ~/profile.d if the directory exists
 if [[ -d "${HOME}/profile.d" ]]; then
   for f in "${HOME}/profile.d/"*.sh; do
@@ -90,7 +98,7 @@ export PYTHONSTARTUP=~/.config/python/pythonrc.py
 # source bash-preexec if homebrew is installed
 # and we are using bash
 if [[ ${SHELLNAME} == "bash" ]]; then
-    PREEXEC_INIT_SCRIPT=${HOMEBREW_PREFIX}/etc/profile.d/bash-preexec.sh 
+    PREEXEC_INIT_SCRIPT=${HOMEBREW_PREFIX}/etc/profile.d/bash-preexec.sh
     if [[ -f ${PREEXEC_INIT_SCRIPT} ]]; then
         source ${PREEXEC_INIT_SCRIPT}
     else
@@ -104,8 +112,8 @@ eval "$(starship init ${SHELLNAME})"
 eval "$(micromamba shell hook -s ${SHELLNAME})"
 
 # source an env file
-function dotenv { 
-    set -a; . ${1:-.env} || true; set +a; 
+function dotenv {
+    set -a; . ${1:-.env} || true; set +a;
 };
 if [[ ${SHELLNAME} == "zsh" ]]; then
     # disable displaying of functions after definition in the terminal
