@@ -24,6 +24,23 @@
 | `<leader>o` | Toggle outline |
 | `<leader>t` | Focus outline |
 
+### diffview.nvim
+| Key(s) | Description |
+| :--- | :--- |
+| `<Tab>` | (In Diffview) Open diff for next file |
+| `<S-Tab>` | (In Diffview) Open diff for previous file |
+| `gf` | (In Diffview) Open file in previous tabpage |
+| `<leader>e` | (In Diffview) Focus file panel |
+| `<leader>ft` | (In Diffview) Toggle file panel |
+| `j` | (In File Panel) Next file entry |
+| `k` | (In File Panel) Previous file entry |
+| `<CR>` | (In File Panel) Open diff for selected entry |
+| `-` | (In File Panel) Stage/unstage selected entry |
+| `S` | (In File Panel) Stage all entries |
+| `U` | (In File Panel) Unstage all entries |
+| `X` | (In File Panel) Restore entry to left side state |
+| `R` | (In File Panel) Refresh file list |
+
 ### which-key.nvim
 | Key(s) | Description |
 | :--- | :--- |
@@ -102,6 +119,7 @@
 | `<C-c><C-c>` | (Visual Mode) Send code to Slime/REPL | vim-slime |
 | `<C-k>` | Show signature help | LSP |
 | `<C-p>` | Toggle file explorer | nvim-tree.lua |
+| `<CR>` | (In File Panel) Open diff for selected entry | diffview.nvim |
 | `<ESC>` | (Normal Mode) Clear search highlight | General Settings |
 | `<ESC>` | (Terminal Mode) Exit terminal mode | General Settings |
 | `<Leader>1-9` | Switch to window 1-9 | General Settings |
@@ -122,11 +140,13 @@
 | `<leader>dr` | Toggle REPL | DAP |
 | `<leader>dt` | Terminate session | DAP |
 | `<leader>du` | Toggle DAP UI | DAP |
+| `<leader>e` | (In Diffview) Focus file panel | diffview.nvim |
 | `<leader>fb` | Find open buffers | Telescope |
 | `<leader>fe` | Open file browser | Telescope |
 | `<leader>ff` | Find files | Telescope |
 | `<leader>fg` | Grep text in open files | Telescope |
 | `<leader>fh` | Search help tags | Telescope |
+| `<leader>ft` | (In Diffview) Toggle file panel | diffview.nvim |
 | `<leader>lca` | List code actions | LSP |
 | `<leader>ldd` | Show buffer diagnostics | LSP |
 | `<leader>lde` | List definitions | LSP |
@@ -141,9 +161,19 @@
 | `<leader>o` | Toggle outline | outline.nvim |
 | `<leader>t` | Focus outline | outline.nvim |
 | `<leader>tt` | Toggle CodeCompanion Chat | codecompanion.nvim |
+| `<S-Tab>` | (In Diffview) Open diff for previous file | diffview.nvim |
 | `<space>D` | Go to type definition | LSP |
 | `<space>f` | Format code | LSP |
+| `<Tab>` | (In Diffview) Open diff for next file | diffview.nvim |
+| `-` | (In File Panel) Stage/unstage selected entry | diffview.nvim |
 | `ca` | (In NvimTree) Add file/dir to CodeCompanion | nvim-tree.lua |
 | `gD` | Go to declaration | LSP |
 | `gd` | Go to definition | LSP |
+| `gf` | (In Diffview) Open file in previous tabpage | diffview.nvim |
 | `gi` | Go to implementation | LSP |
+| `j` | (In File Panel) Next file entry | diffview.nvim |
+| `k` | (In File Panel) Previous file entry | diffview.nvim |
+| `R` | (In File Panel) Refresh file list | diffview.nvim |
+| `S` | (In File Panel) Stage all entries | diffview.nvim |
+| `U` | (In File Panel) Unstage all entries | diffview.nvim |
+| `X` | (In File Panel) Restore entry to left side state | diffview.nvim |
