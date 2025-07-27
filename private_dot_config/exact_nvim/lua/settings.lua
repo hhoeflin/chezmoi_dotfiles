@@ -38,8 +38,8 @@ vim.api.nvim_set_keymap("n", "<ESC>", ":noh<return><esc>", { silent = true, nore
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- Automatically check and asks to reload buffer if the file changed outside of Neovim
-vim.opt.autoread = false
-vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, {
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "CursorHold", "CursorHoldI" }, {
 	callback = function()
 		vim.cmd("checktime")
 	end,
