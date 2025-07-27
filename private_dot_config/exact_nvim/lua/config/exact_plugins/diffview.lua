@@ -59,7 +59,7 @@ return {
 					{ "n", "<s-tab>", actions.select_prev_entry, { desc = "Open diff for previous file" } },
 					{ "n", "gf", actions.goto_file_edit, { desc = "Open file in previous tabpage" } },
 					{ "n", "<leader>e", actions.focus_files, { desc = "Focus file panel" } },
-					{ "n", "<leader>df", actions.toggle_files, { desc = "Toggle file panel" } },
+					{ "n", "<leader>vf", actions.toggle_files, { desc = "Toggle file panel" } },
 				},
 				file_panel = {
 					{ "n", "j", actions.next_entry, { desc = "Next file entry" } },
@@ -78,8 +78,8 @@ return {
 	end,
 	keys = {
 		-- Searches
-		{ "<leader>do", ":DiffviewOpen<CR>" },
-		{ "<leader>dc", ":DiffviewClose<CR>" },
-		{ "<leader>dr", ":DiffviewRefresh<CR>" },
+		{ "<leader>vo", ":DiffviewOpen<CR>" },
+		{ "<leader>vc", ":DiffviewClose<CR>" },
+		{ "<leader>vr", ":DiffviewRefresh<CR>" },
 	},
 }

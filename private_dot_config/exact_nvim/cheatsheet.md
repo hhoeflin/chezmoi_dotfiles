@@ -27,11 +27,14 @@
 ### diffview.nvim
 | Key(s) | Description |
 | :--- | :--- |
+| `<leader>vo` | Open Diffview |
+| `<leader>vc` | Close Diffview |
+| `<leader>vr` | Refresh Diffview |
 | `<Tab>` | (In Diffview) Open diff for next file |
 | `<S-Tab>` | (In Diffview) Open diff for previous file |
 | `gf` | (In Diffview) Open file in previous tabpage |
 | `<leader>e` | (In Diffview) Focus file panel |
-| `<leader>ft` | (In Diffview) Toggle file panel |
+| `<leader>df` | (In Diffview) Toggle file panel |
 | `j` | (In File Panel) Next file entry |
 | `k` | (In File Panel) Previous file entry |
 | `<CR>` | (In File Panel) Open diff for selected entry |
@@ -131,6 +134,7 @@
 | `<leader>dB` | Set conditional breakpoint | DAP |
 | `<leader>dc` | Continue execution | DAP |
 | `<leader>de` | Evaluate expression | DAP |
+| `<leader>df` | (In Diffview) Toggle file panel | diffview.nvim |
 | `<leader>di` | Step into | DAP |
 | `<leader>dl` | Run last debug session | DAP |
 | `<leader>do` | Step out | DAP |
@@ -146,7 +150,6 @@
 | `<leader>ff` | Find files | Telescope |
 | `<leader>fg` | Grep text in open files | Telescope |
 | `<leader>fh` | Search help tags | Telescope |
-| `<leader>ft` | (In Diffview) Toggle file panel | diffview.nvim |
 | `<leader>lca` | List code actions | LSP |
 | `<leader>ldd` | Show buffer diagnostics | LSP |
 | `<leader>lde` | List definitions | LSP |
@@ -161,6 +164,9 @@
 | `<leader>o` | Toggle outline | outline.nvim |
 | `<leader>t` | Focus outline | outline.nvim |
 | `<leader>tt` | Toggle CodeCompanion Chat | codecompanion.nvim |
+| `<leader>vc` | Close Diffview | diffview.nvim |
+| `<leader>vo` | Open Diffview | diffview.nvim |
+| `<leader>vr` | Refresh Diffview | diffview.nvim |
 | `<S-Tab>` | (In Diffview) Open diff for previous file | diffview.nvim |
 | `<space>D` | Go to type definition | LSP |
 | `<space>f` | Format code | LSP |
