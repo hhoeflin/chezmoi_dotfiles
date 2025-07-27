@@ -7,3 +7,9 @@ disabled = false
 
 [conda]
 truncation_length = 2
+
+[custom.chezmoi]
+command = "echo chezmoi"
+when = "test -n \"$CHEZMOI\""
+format = "[in $output]($style) "
+style = "bold blue"
