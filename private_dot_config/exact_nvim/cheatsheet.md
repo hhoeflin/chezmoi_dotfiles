@@ -7,16 +7,10 @@
 | :--- | :--- |
 | `<Leader>a` | Toggle symbol outline |
 
-### codecompanion.nvim
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>tt` | Toggle CodeCompanion Chat |
-
 ### nvim-tree.lua
 | Key(s) | Description |
 | :--- | :--- |
 | `<C-p>` | Toggle file explorer |
-| `ca` | (In NvimTree) Add file/dir to CodeCompanion |
 
 ### outline.nvim
 | Key(s) | Description |
@@ -76,30 +70,18 @@
 | `<leader>lds` | List document symbols |
 | `<leader>lws` | List workspace symbols |
 | `<leader>lys` | List dynamic workspace symbols |
-| `<leader>lca` | List code actions |
+| `<leader>lca` | Code actions (normal mode) |
+| `<leader>lra` | Code actions (visual/range mode) |
 | `<leader>ldd` | Show buffer diagnostics |
 | `<leader>lwd` | Show workspace diagnostics |
 | `<leader>li` | List implementations |
 | `<leader>lde` | List definitions |
 | `<leader>ltd` | List type definitions |
 
-### DAP (Debug Adapter Protocol)
+### Lspsaga
 | Key(s) | Description |
 | :--- | :--- |
-| `<leader>db` | Toggle breakpoint |
-| `<leader>dB` | Set conditional breakpoint |
-| `<leader>dc` | Continue execution |
-| `<leader>da` | Run with arguments |
-| `<leader>dl` | Run last debug session |
-| `<leader>di` | Step into |
-| `<leader>do` | Step out |
-| `<leader>dO` | Step over |
-| `<leader>dr` | Toggle REPL |
-| `<leader>du` | Toggle DAP UI |
-| `<leader>de` | Evaluate expression |
-| `<leader>dt` | Terminate session |
-| `<leader>dPt` | Debug Python test method |
-| `<leader>dPc` | Debug Python test class |
+| `<leader>lx` | Workspace diagnostics (Lspsaga) |
 
 ### General Settings
 | Key(s) | Description |
@@ -109,11 +91,6 @@
 | `<Leader>1-9` | Switch to window 1-9 |
 | `<ESC>` | (Normal Mode) Clear search highlight |
 | `<ESC>` | (Terminal Mode) Exit terminal mode |
-
-### Lspsaga
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>lx` | Workspace Diagnostics (Lspsaga) |
 
 ## View by Key
 
@@ -129,41 +106,27 @@
 | `<Leader>a` | Toggle symbol outline | aerial.nvim |
 | `<leader>?` | Show buffer-local keymaps | which-key.nvim |
 | `<leader>b` | Find open buffers | Telescope |
-| `<leader>da` | Run with arguments | DAP |
-| `<leader>db` | Toggle breakpoint | DAP |
-| `<leader>dB` | Set conditional breakpoint | DAP |
-| `<leader>dc` | Continue execution | DAP |
-| `<leader>de` | Evaluate expression | DAP |
 | `<leader>df` | (In Diffview) Toggle file panel | diffview.nvim |
-| `<leader>di` | Step into | DAP |
-| `<leader>dl` | Run last debug session | DAP |
-| `<leader>do` | Step out | DAP |
-| `<leader>dO` | Step over | DAP |
-| `<leader>dPc` | Debug Python test class | DAP |
-| `<leader>dPt` | Debug Python test method | DAP |
-| `<leader>dr` | Toggle REPL | DAP |
-| `<leader>dt` | Terminate session | DAP |
-| `<leader>du` | Toggle DAP UI | DAP |
 | `<leader>e` | (In Diffview) Focus file panel | diffview.nvim |
 | `<leader>fb` | Find open buffers | Telescope |
 | `<leader>fe` | Open file browser | Telescope |
 | `<leader>ff` | Find files | Telescope |
 | `<leader>fg` | Grep text in open files | Telescope |
 | `<leader>fh` | Search help tags | Telescope |
-| `<leader>lca` | List code actions | LSP |
+| `<leader>lca` | Code actions (normal mode) | LSP |
 | `<leader>ldd` | Show buffer diagnostics | LSP |
 | `<leader>lde` | List definitions | LSP |
 | `<leader>lds` | List document symbols | LSP |
 | `<leader>li` | List implementations | LSP |
+| `<leader>lra` | Code actions (visual/range mode) | LSP |
 | `<leader>lre` | List LSP references | LSP |
 | `<leader>ltd` | List type definitions | LSP |
 | `<leader>lwd` | Show workspace diagnostics | LSP |
 | `<leader>lws` | List workspace symbols | LSP |
-| `<leader>lx` | Workspace Diagnostics (Lspsaga) | Lspsaga |
+| `<leader>lx` | Workspace diagnostics (Lspsaga) | Lspsaga |
 | `<leader>lys` | List dynamic workspace symbols | LSP |
 | `<leader>o` | Toggle outline | outline.nvim |
 | `<leader>t` | Focus outline | outline.nvim |
-| `<leader>tt` | Toggle CodeCompanion Chat | codecompanion.nvim |
 | `<leader>vc` | Close Diffview | diffview.nvim |
 | `<leader>vo` | Open Diffview | diffview.nvim |
 | `<leader>vr` | Refresh Diffview | diffview.nvim |
@@ -172,7 +135,6 @@
 | `<space>f` | Format code | LSP |
 | `<Tab>` | (In Diffview) Open diff for next file | diffview.nvim |
 | `-` | (In File Panel) Stage/unstage selected entry | diffview.nvim |
-| `ca` | (In NvimTree) Add file/dir to CodeCompanion | nvim-tree.lua |
 | `gD` | Go to declaration | LSP |
 | `gd` | Go to definition | LSP |
 | `gf` | (In Diffview) Open file in previous tabpage | diffview.nvim |

@@ -19,6 +19,7 @@ return {
         ]])
 
 		vim.diagnostic.config({
+			virtual_lines = { current_line = true },
 			virtual_text = {
 				source = "always",
 				format = function(diagnostic)

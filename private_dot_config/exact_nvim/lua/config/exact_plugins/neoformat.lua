@@ -1,7 +1,7 @@
 return {
 	"sbdchd/neoformat",
 	lazy = false,
-	init = function()
+	config = function()
 		local g = vim.g
 
 		-- ruff isort formatter
@@ -32,7 +32,8 @@ return {
 		g.neoformat_enabled_lua = { "stylua" }
 
 		g.neoformat_run_all_formatters = 1
-		g.neoformat_only_msg_on_error = 1
+		-- Temporarily disabled to see all messages for debugging
+		-- g.neoformat_only_msg_on_error = 1
 
 		vim.cmd([[
         :augroup fmt

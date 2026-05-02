@@ -3,9 +3,6 @@ return {
 	lazy = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		-- require your component
-		local spinner = require("myutils.code_companion_spinner")
-
 		require("lualine").setup({
 			sections = {
 				lualine_c = {
@@ -30,7 +27,6 @@ return {
 					"encoding",
 					"fileformat",
 					"filetype",
-					spinner,
 				},
 			},
 		})

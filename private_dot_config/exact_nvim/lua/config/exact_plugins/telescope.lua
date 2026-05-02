@@ -1,7 +1,11 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.5",
-	dependencies = { "nvim-lua/plenary.nvim", "xiyaowong/telescope-emoji.nvim" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"xiyaowong/telescope-emoji.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
+	},
 	keys = {
 		-- Searches
 		{ "<leader>ff", ":lua require('telescope.builtin').find_files()<cr>" },
@@ -9,14 +13,14 @@ return {
 		{ "<leader>fb", ":lua require('telescope.builtin').buffers()<cr>" },
 		{ "<leader>b", ":lua require('telescope.builtin').buffers()<cr>" },
 		{ "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>" },
-		{ "<leader>fe", ":lua require('telescope.builtin').file_browser()<cr>" },
+		{ "<leader>fe", ":lua require('telescope').extensions.file_browser.file_browser()<cr>" },
 		-- LSP
 		{ "<leader>lre", ":lua require('telescope.builtin').lsp_references()<cr>" },
 		{ "<leader>lds", ":lua require('telescope.builtin').lsp_document_symbols()<cr>" },
 		{ "<leader>lws", ":lua require('telescope.builtin').lsp_workspace_symbols()<cr>" },
 		{ "<leader>lys", ":lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>" },
-		{ "<leader>lca", ":lua require('telescope.builtin').lsp_code_actions()<cr>" },
-		{ "<leader>lra", ":lua require('telescope.builtin').lsp_range_code_actions()<cr>" },
+		{ "<leader>lca", ":lua vim.lsp.buf.code_action()<cr>", desc = "Code actions" },
+		{ "<leader>lra", ":lua vim.lsp.buf.code_action()<cr>", mode = "v", desc = "Range code actions" },
 		{ "<leader>ldd", ":lua require('telescope.builtin').diagnostics({bufnr=0})<cr>" },
 		{ "<leader>lwd", ":lua require('telescope.builtin').diagnostics()<cr>" },
 		{ "<leader>li", ":lua require('telescope.builtin').lsp_implementations()<cr>" },
@@ -26,5 +30,6 @@ return {
 	cmd = "Telescope",
 	config = function()
 		require("telescope").load_extension("emoji")
+		require("telescope").load_extension("file_browser")
 	end,
 }

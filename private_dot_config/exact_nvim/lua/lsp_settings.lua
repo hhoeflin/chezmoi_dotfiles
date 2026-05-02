@@ -1,5 +1,5 @@
 require("lspconfig")
-vim.lsp.config("pyright", { capabilities = require("blink.cmp").get_lsp_capabilities() })
+vim.lsp.config("basedpyright", { capabilities = require("blink.cmp").get_lsp_capabilities() })
 vim.lsp.enable("basedpyright")
 vim.lsp.config("lua_ls", {
 	settings = {
@@ -12,6 +12,19 @@ vim.lsp.config("lua_ls", {
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 vim.lsp.enable("lua_ls")
+-- Configure rustaceanvim
+-- Note: rustaceanvim manages rust-analyzer automatically.
+-- Inlay hints are handled by Neovim's native LSP (enabled globally below).
+vim.g.rustaceanvim = {
+	server = {
+		capabilities = require("blink.cmp").get_lsp_capabilities(),
+		-- Disable LSP formatting to let neoformat handle it
+		on_attach = function(client, bufnr)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	},
+}
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
@@ -22,6 +35,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- here we add things that are common to all clients
 		local bufnr = ev.buf
+
+		-- Enable inlay hints globally
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
 		local function buf_set_keymap(...)
 			vim.api.nvim_buf_set_keymap(bufnr, ...)
 		end
@@ -33,10 +50,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 		buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 		buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+		buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 		buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 		buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 		buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
-		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+		buf_set_keymap(
+			"n",
+			"<leader>i",
+			"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+			opts
+		)
 
 		-- now client specific settings
 		-- if client.name == 'client1' then

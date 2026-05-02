@@ -106,7 +106,7 @@ return {
 			signature = {
 				enabled = true,
 				auto_trigger = true,
-				auto_show = false,
+				auto_show = true,
 				window = { show_documentation = true },
 			},
 		},

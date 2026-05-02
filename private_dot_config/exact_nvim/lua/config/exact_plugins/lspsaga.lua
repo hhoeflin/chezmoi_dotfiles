@@ -5,6 +5,9 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-tree/nvim-web-devicons",
 	},
+	keys = {
+		{ "<leader>lx", "<cmd>Lspsaga show_workspace_diagnostics<CR>", desc = "Workspace diagnostics (Lspsaga)" },
+	},
 	opts = {
 		ui = {
 			border = "rounded",
