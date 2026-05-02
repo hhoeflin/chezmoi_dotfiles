@@ -57,3 +57,6 @@ vim.diagnostic.config({ virtual_text = true, virtual_lines = { current_line = tr
 
 -- keymap for showing diagnostics in a floating window
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { noremap = true, silent = true })
+
+-- Cheatsheet toggle in a floating window
+vim.keymap.set("n", "<leader>cs", function() require("myutils.cheatsheet").toggle() end, { noremap = true, silent = true, desc = "Toggle cheatsheet" })

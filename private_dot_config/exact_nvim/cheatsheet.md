@@ -89,6 +89,7 @@
 | `\` | Leader key |
 | `-` | Local leader key |
 | `<Leader>1-9` | Switch to window 1-9 |
+| `<leader>cs` | Toggle this cheatsheet |
 | `<ESC>` | (Normal Mode) Clear search highlight |
 | `<ESC>` | (Terminal Mode) Exit terminal mode |
 
@@ -103,6 +104,7 @@
 | `<ESC>` | (Normal Mode) Clear search highlight | General Settings |
 | `<ESC>` | (Terminal Mode) Exit terminal mode | General Settings |
 | `<Leader>1-9` | Switch to window 1-9 | General Settings |
+| `<leader>cs` | Toggle cheatsheet | General Settings |
 | `<Leader>a` | Toggle symbol outline | aerial.nvim |
 | `<leader>?` | Show buffer-local keymaps | which-key.nvim |
 | `<leader>b` | Find open buffers | Telescope |
