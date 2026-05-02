@@ -2,148 +2,85 @@
 
 ## View by Plugin
 
-### aerial.nvim
-| Key(s) | Description |
-| :--- | :--- |
-| `<Leader>a` | Toggle symbol outline |
+### aerial.nvim · nvim-tree · outline.nvim · which-key · vim-slime
 
-### nvim-tree.lua
-| Key(s) | Description |
-| :--- | :--- |
-| `<C-p>` | Toggle file explorer |
-
-### outline.nvim
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>o` | Toggle outline |
-| `<leader>t` | Focus outline |
-
-### diffview.nvim
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>vo` | Open Diffview |
-| `<leader>vc` | Close Diffview |
-| `<leader>vr` | Refresh Diffview |
-| `<Tab>` | (In Diffview) Open diff for next file |
-| `<S-Tab>` | (In Diffview) Open diff for previous file |
-| `gf` | (In Diffview) Open file in previous tabpage |
-| `<leader>e` | (In Diffview) Focus file panel |
-| `<leader>df` | (In Diffview) Toggle file panel |
-| `j` | (In File Panel) Next file entry |
-| `k` | (In File Panel) Previous file entry |
-| `<CR>` | (In File Panel) Open diff for selected entry |
-| `-` | (In File Panel) Stage/unstage selected entry |
-| `S` | (In File Panel) Stage all entries |
-| `U` | (In File Panel) Unstage all entries |
-| `X` | (In File Panel) Restore entry to left side state |
-| `R` | (In File Panel) Refresh file list |
-
-### which-key.nvim
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>?` | Show buffer-local keymaps |
-
-### vim-slime
-| Key(s) | Description |
-| :--- | :--- |
-| `<C-c><C-c>` | (Visual Mode) Send code to Slime/REPL |
+| Key | Description | Key | Description |
+| :--- | :--- | :--- | :--- |
+| `<Leader>a` | Toggle symbol outline (aerial) | `<C-p>` | Toggle file explorer |
+| `<leader>o` | Toggle outline (outline.nvim) | `<leader>t` | Focus outline |
+| `<leader>?` | Show buffer-local keymaps | `<C-c><C-c>` | (Visual) Send code to REPL |
 
 ### Telescope (Fuzzy Finder)
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>ff` | Find files |
-| `<leader>fg` | Grep text in open files |
-| `<leader>fb` or `<leader>b` | Find open buffers |
-| `<leader>fh` | Search help tags |
-| `<leader>fe` | Open file browser |
+
+| Key | Description | Key | Description |
+| :--- | :--- | :--- | :--- |
+| `<leader>ff` | Find files | `<leader>fg` | Grep text in open files |
+| `<leader>fb` / `<leader>b` | Find open buffers | `<leader>fh` | Search help tags |
+| `<leader>fe` | Open file browser | | |
+
+### diffview.nvim
+
+| Key | Description | Key | Description |
+| :--- | :--- | :--- | :--- |
+| `<leader>vo` | Open Diffview | `<leader>vc` | Close Diffview |
+| `<leader>vr` | Refresh Diffview | `<leader>df` | Toggle file panel |
+| `<leader>e` | Focus file panel | `gf` | Open file in prev tabpage |
+| `<Tab>` | Next file diff | `<S-Tab>` | Previous file diff |
+| `<CR>` | Open diff for selected | `-` | Stage/unstage selected |
+| `S` | Stage all entries | `U` | Unstage all entries |
+| `X` | Restore to left side | `R` | Refresh file list |
+| `j` | Next file entry | `k` | Previous file entry |
 
 ### LSP (Language Server Protocol)
-| Key(s) | Description |
-| :--- | :--- |
-| `gD` | Go to declaration |
-| `gd` | Go to definition |
-| `gi` | Go to implementation |
-| `<C-k>` | Show signature help |
-| `<space>D` | Go to type definition |
-| `<space>f` | Format code |
-| `<leader>lre` | List LSP references |
-| `<leader>lds` | List document symbols |
-| `<leader>lws` | List workspace symbols |
-| `<leader>lys` | List dynamic workspace symbols |
-| `<leader>lca` | Code actions (normal mode) |
-| `<leader>lra` | Code actions (visual/range mode) |
-| `<leader>ldd` | Show buffer diagnostics |
-| `<leader>lwd` | Show workspace diagnostics |
-| `<leader>li` | List implementations |
-| `<leader>lde` | List definitions |
-| `<leader>ltd` | List type definitions |
 
-### Lspsaga
-| Key(s) | Description |
-| :--- | :--- |
-| `<leader>lx` | Workspace diagnostics (Lspsaga) |
+| Key | Description | Key | Description |
+| :--- | :--- | :--- | :--- |
+| `gd` | Go to definition | `gD` | Go to declaration |
+| `gi` | Go to implementation | `<space>D` | Go to type definition |
+| `<C-k>` | Show signature help | `<space>f` | Format code |
+| `<leader>lre` | List LSP references | `<leader>lds` | List document symbols |
+| `<leader>lws` | List workspace symbols | `<leader>lys` | List dynamic workspace symbols |
+| `<leader>lca` | Code actions (normal) | `<leader>lra` | Code actions (visual/range) |
+| `<leader>ldd` | Show buffer diagnostics | `<leader>lwd` | Show workspace diagnostics |
+| `<leader>li` | List implementations | `<leader>lde` | List definitions |
+| `<leader>ltd` | List type definitions | `<leader>lx` | Workspace diagnostics (Lspsaga) |
 
-### General Settings
-| Key(s) | Description |
-| :--- | :--- |
-| `\` | Leader key |
-| `-` | Local leader key |
-| `<Leader>1-9` | Switch to window 1-9 |
-| `<leader>cs` | Toggle this cheatsheet |
-| `<ESC>` | (Normal Mode) Clear search highlight |
-| `<ESC>` | (Terminal Mode) Exit terminal mode |
+### General
+
+| Key | Description | Key | Description |
+| :--- | :--- | :--- | :--- |
+| `\` | Leader key | `-` | Local leader key |
+| `<Leader>1-9` | Switch to window 1–9 | `<leader>cs` | Toggle this cheatsheet |
+| `<ESC>` | (Normal) Clear search highlight | `<ESC>` | (Terminal) Exit terminal mode |
+
+---
 
 ## View by Key
 
-| Key(s) | Description | Plugin |
-| :--- | :--- | :--- |
-| `<C-c><C-c>` | (Visual Mode) Send code to Slime/REPL | vim-slime |
-| `<C-k>` | Show signature help | LSP |
-| `<C-p>` | Toggle file explorer | nvim-tree.lua |
-| `<CR>` | (In File Panel) Open diff for selected entry | diffview.nvim |
-| `<ESC>` | (Normal Mode) Clear search highlight | General Settings |
-| `<ESC>` | (Terminal Mode) Exit terminal mode | General Settings |
-| `<Leader>1-9` | Switch to window 1-9 | General Settings |
-| `<leader>cs` | Toggle cheatsheet | General Settings |
-| `<Leader>a` | Toggle symbol outline | aerial.nvim |
-| `<leader>?` | Show buffer-local keymaps | which-key.nvim |
-| `<leader>b` | Find open buffers | Telescope |
-| `<leader>df` | (In Diffview) Toggle file panel | diffview.nvim |
-| `<leader>e` | (In Diffview) Focus file panel | diffview.nvim |
-| `<leader>fb` | Find open buffers | Telescope |
-| `<leader>fe` | Open file browser | Telescope |
-| `<leader>ff` | Find files | Telescope |
-| `<leader>fg` | Grep text in open files | Telescope |
-| `<leader>fh` | Search help tags | Telescope |
-| `<leader>lca` | Code actions (normal mode) | LSP |
-| `<leader>ldd` | Show buffer diagnostics | LSP |
-| `<leader>lde` | List definitions | LSP |
-| `<leader>lds` | List document symbols | LSP |
-| `<leader>li` | List implementations | LSP |
-| `<leader>lra` | Code actions (visual/range mode) | LSP |
-| `<leader>lre` | List LSP references | LSP |
-| `<leader>ltd` | List type definitions | LSP |
-| `<leader>lwd` | Show workspace diagnostics | LSP |
-| `<leader>lws` | List workspace symbols | LSP |
-| `<leader>lx` | Workspace diagnostics (Lspsaga) | Lspsaga |
-| `<leader>lys` | List dynamic workspace symbols | LSP |
-| `<leader>o` | Toggle outline | outline.nvim |
-| `<leader>t` | Focus outline | outline.nvim |
-| `<leader>vc` | Close Diffview | diffview.nvim |
-| `<leader>vo` | Open Diffview | diffview.nvim |
-| `<leader>vr` | Refresh Diffview | diffview.nvim |
-| `<S-Tab>` | (In Diffview) Open diff for previous file | diffview.nvim |
-| `<space>D` | Go to type definition | LSP |
-| `<space>f` | Format code | LSP |
-| `<Tab>` | (In Diffview) Open diff for next file | diffview.nvim |
-| `-` | (In File Panel) Stage/unstage selected entry | diffview.nvim |
-| `gD` | Go to declaration | LSP |
-| `gd` | Go to definition | LSP |
-| `gf` | (In Diffview) Open file in previous tabpage | diffview.nvim |
-| `gi` | Go to implementation | LSP |
-| `j` | (In File Panel) Next file entry | diffview.nvim |
-| `k` | (In File Panel) Previous file entry | diffview.nvim |
-| `R` | (In File Panel) Refresh file list | diffview.nvim |
-| `S` | (In File Panel) Stage all entries | diffview.nvim |
-| `U` | (In File Panel) Unstage all entries | diffview.nvim |
-| `X` | (In File Panel) Restore entry to left side state | diffview.nvim |
+| Key | Description | Key | Description |
+| :--- | :--- | :--- | :--- |
+| `<C-c><C-c>` | (Visual) Send code to REPL | `<C-k>` | Show signature help |
+| `<C-p>` | Toggle file explorer | `<CR>` | (Diffview) Open diff for selected |
+| `<ESC>` | Clear search highlight | `<ESC>` | Exit terminal mode |
+| `<Leader>1-9` | Switch to window 1–9 | `<leader>?` | Show buffer-local keymaps |
+| `<Leader>a` | Toggle symbol outline | `<leader>b` | Find open buffers |
+| `<leader>cs` | Toggle cheatsheet | `<leader>df` | (Diffview) Toggle file panel |
+| `<leader>e` | (Diffview) Focus file panel | `<leader>fb` | Find open buffers |
+| `<leader>fe` | Open file browser | `<leader>ff` | Find files |
+| `<leader>fg` | Grep text in open files | `<leader>fh` | Search help tags |
+| `<leader>lca` | Code actions (normal) | `<leader>ldd` | Show buffer diagnostics |
+| `<leader>lde` | List definitions | `<leader>lds` | List document symbols |
+| `<leader>li` | List implementations | `<leader>lra` | Code actions (visual) |
+| `<leader>lre` | List LSP references | `<leader>ltd` | List type definitions |
+| `<leader>lwd` | Show workspace diagnostics | `<leader>lws` | List workspace symbols |
+| `<leader>lx` | Workspace diagnostics (Lspsaga) | `<leader>lys` | List dynamic workspace symbols |
+| `<leader>o` | Toggle outline | `<leader>t` | Focus outline |
+| `<leader>vc` | Close Diffview | `<leader>vo` | Open Diffview |
+| `<leader>vr` | Refresh Diffview | `<S-Tab>` | (Diffview) Previous file diff |
+| `<space>D` | Go to type definition | `<space>f` | Format code |
+| `<Tab>` | (Diffview) Next file diff | `-` | (Diffview) Stage/unstage entry |
+| `gD` | Go to declaration | `gd` | Go to definition |
+| `gf` | (Diffview) Open file in prev tabpage | `gi` | Go to implementation |
+| `j` | (Diffview) Next file entry | `k` | (Diffview) Previous file entry |
+| `R` | (Diffview) Refresh file list | `S` | (Diffview) Stage all entries |
+| `U` | (Diffview) Unstage all entries | `X` | (Diffview) Restore to left side |
