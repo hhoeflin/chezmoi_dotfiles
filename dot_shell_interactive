@@ -1,0 +1,49 @@
+# Prevent double-sourcing
+[[ -v __SHELL_INTERACTIVE_SOURCED ]] && return
+__SHELL_INTERACTIVE_SOURCED=1
+
+# Disable Ctrl-S flow control
+if [[ -t 0 && $- = *i* ]]; then
+    stty -ixon
+fi
+
+# Aliases
+alias lg='lazygit'
+alias cm='chezmoi'
+alias ls='lsd -F'
+alias ll='lsd -lahF'
+alias lt='lsd -lahF --tree'
+alias lt2='lsd -lahF --tree --depth 2'
+alias lt3='lsd -lahF --tree --depth 3'
+alias dtask='task -t ~/.config/go-task/Taskfile.yml'
+alias e='$EDITOR `fzf -m --preview="bat --color always {}"`'
+
+# Atuin shell history
+if command -v atuin &> /dev/null; then
+    eval "$(atuin init ${SHELLNAME} --disable-up-arrow)"
+fi
+
+# Zoxide smart cd
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init ${SHELLNAME})"
+fi
+
+# Starship prompt
+if command -v starship &> /dev/null; then
+    eval "$(starship init ${SHELLNAME})"
+fi
+
+# Micromamba
+if command -v micromamba &> /dev/null; then
+    eval "$(micromamba shell hook -s ${SHELLNAME})"
+fi
+
+# Dotenv function
+function dotenv {
+    set -a; . ${1:-.env} || true; set +a;
+}
+if [[ ${SHELLNAME} == "zsh" ]]; then
+    export -f dotenv > /dev/null
+else
+    export -f dotenv
+fi

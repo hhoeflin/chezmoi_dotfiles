@@ -1,0 +1,44 @@
+# Prevent double-sourcing
+[[ -v __SHELL_COMMON_SOURCED ]] && return
+__SHELL_COMMON_SOURCED=1
+
+SHELLNAME=$(basename ${SHELL})
+export HOMEBREW_NO_ANALYTICS=1
+export EDITOR="nvim"
+
+# Homebrew detection
+if ! [[ -v HOMEBREW_PREFIX ]]; then
+    if [[ -d "/opt/homebrew" ]]; then
+        HOMEBREW_PREFIX="/opt/homebrew"
+    elif [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+        HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+    elif [[ -d "${HOME}/.homebrew" ]]; then
+        HOMEBREW_PREFIX="${HOME}/.homebrew"
+    fi
+fi
+
+# Package manager: prefer Homebrew, fall back to Pixi
+if [[ -v HOMEBREW_PREFIX ]] && [[ -x "${HOMEBREW_PREFIX}/bin/brew" ]]; then
+    eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+
+    LMOD_INIT_SCRIPT="${HOMEBREW_PREFIX}/opt/lmod/init/profile"
+    if [[ -f ${LMOD_INIT_SCRIPT} ]]; then
+        source ${LMOD_INIT_SCRIPT}
+    fi
+
+    export _PKG_MANAGER="homebrew"
+elif [[ -x "${HOME}/.pixi/bin/pixi" ]]; then
+    export PATH="${HOME}/.pixi/bin:${PATH}"
+    export _PKG_MANAGER="pixi"
+else
+    echo "Note: neither Homebrew nor Pixi found; some tools may be unavailable."
+    export _PKG_MANAGER="none"
+fi
+
+# Module paths
+if [[ -d "${HOME}/modules" ]]; then
+    MODULEPATH="${HOME}/modules${MODULEPATH:+":$MODULEPATH"}"
+fi
+if [[ -d "/opt/modules" ]]; then
+    MODULEPATH="/opt/modules${MODULEPATH:+":$MODULEPATH"}"
+fi
