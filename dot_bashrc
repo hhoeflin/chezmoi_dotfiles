@@ -30,8 +30,6 @@ export HISTFILESIZE=100000
 export HISTSIZE=10000
 shopt -s histappend checkwinsize extglob globstar checkjobs
 
-export PYTHONSTARTUP=~/.config/python/pythonrc.py
-
 # bash-preexec: must be sourced before shell_interactive (atuin depends on it)
 # Homebrew installs it as a formula; for Pixi install manually (see machine_setup/pixi/README.md)
 if [[ "${_PKG_MANAGER}" == "homebrew" ]]; then
