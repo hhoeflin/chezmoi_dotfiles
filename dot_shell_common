@@ -6,6 +6,9 @@ SHELLNAME=$(basename ${SHELL})
 export HOMEBREW_NO_ANALYTICS=1
 export EDITOR="nvim"
 
+# ~/.local/bin path
+export PATH=${HOME}/.local/bin:${PATH}
+
 # Homebrew detection
 if ! [[ -v HOMEBREW_PREFIX ]]; then
     if [[ -d "/opt/homebrew" ]]; then
